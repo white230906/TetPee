@@ -2,7 +2,7 @@ using TetPee.Repository.Abstraction;
 
 namespace TetPee.Repository.Entity;
 
-public abstract class Seller: BaseEntity<Guid>, IAuditableEntity
+public class Seller: BaseEntity<Guid>, IAuditableEntity
 {   
     public string TaxCode { get; set; }
     public string CompanyName { get; set; }

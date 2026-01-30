@@ -10,8 +10,6 @@ public class ProductCategory: BaseEntity<Guid>, IAuditableEntity
     public Guid ProductID { get; set; } // FK
     public Product Product { get; set; }
     
-    
-    
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? UpdatedAt { get; set; }
 }

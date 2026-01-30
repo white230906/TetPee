@@ -19,6 +19,7 @@ public class User: BaseEntity<Guid>, IAuditableEntity
         // Hangfire 
         // Quartz
         // Cron job
+    public Seller? Seller { get; set; }
     public ICollection<Order>  Orders { get; set; } = new List<Order>();
     //mối qh một nhiều cho ORM nó generate xuống db
     
