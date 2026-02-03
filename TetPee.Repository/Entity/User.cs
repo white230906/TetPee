@@ -11,7 +11,7 @@ public class User: BaseEntity<Guid>, IAuditableEntity
     public string? PhoneNumber { get; set; }
     public required string HashedPassword { get; set; }
     public string? Address { get; set; }
-    public required string Role { get; set; } = "user";// User, Seller, Admin
+    public string Role { get; set; } = "user";// User, Seller, Admin
     public bool IsVerify { get; set; } = false; // khi user register thì phải verify email hợp lệ
     public int VerifyCode  { get; set; } // Mã verify gửi về email
     //(down)thuật ngữ con bot: trong 5p hay 10p thằng nào chưa verify thì con bot sẽ dọn dẹp
