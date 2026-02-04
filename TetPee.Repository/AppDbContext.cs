@@ -3,7 +3,21 @@ using TetPee.Repository.Entity;
 
 namespace TetPee.Repository;
 
-public class AppDbContext : DbContext//là một ..., đại diện cho db
+public class AppDbContext : DbContext//là một thằng đại diện cho db
+    //kế thừa từ DbContext của EF Core
+    //AppContext = cầu nối giữa C# code với DB
+    //EF core ko làm việc trực tiếp với DB mà thông qua DbContext
+    /*
+     _dbContext.Users.Add(user);
+    _dbContext.SaveChanges();
+    Thì thực chất:
+    EF Core nhìn vào AppDbContext
+    Biết:
+    Có bảng Users
+    Mapping với entity User
+    Rồi tự sinh SQL để chạy vào DB
+     */
+
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) 
         : base(options) { }
