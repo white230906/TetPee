@@ -12,8 +12,8 @@ using TetPee.Repository;
 namespace TetPee.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260204000306_required-less")]
-    partial class requiredless
+    [Migration("20260204132331_OnModelCreating")]
+    partial class OnModelCreating
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -289,13 +289,15 @@ namespace TetPee.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("CampanyAddress")
+                    b.Property<string>("CompanyAddress")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -305,7 +307,8 @@ namespace TetPee.Repository.Migrations
 
                     b.Property<string>("TaxCode")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -319,6 +322,18 @@ namespace TetPee.Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("Sellers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3acd11e3-69ff-4d3c-ac73-29cd9f7f839c"),
+                            CompanyAddress = "123 Main St, Cityville",
+                            CompanyName = "ABC Company",
+                            CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            TaxCode = "TAXCODE123",
+                            UserId = new Guid("3438161a-836d-4e51-9168-e27611183d2d")
+                        });
                 });
 
             modelBuilder.Entity("TetPee.Repository.Entity.Storage", b =>
@@ -362,18 +377,22 @@ namespace TetPee.Repository.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("HashedPassword")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -383,14 +402,19 @@ namespace TetPee.Repository.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasDefaultValue("User");
 
                     b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -400,7 +424,38 @@ namespace TetPee.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3438161a-836d-4e51-9168-e27611183d2d"),
+                            CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "tan182205@gmail.com",
+                            FirstName = "Tan",
+                            HashedPassword = "hashed_password_1",
+                            IsDeleted = false,
+                            IsVerify = false,
+                            LastName = "Tran",
+                            Role = "user",
+                            VerifyCode = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("66bf31d6-9284-422d-8024-361b45585b76"),
+                            CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "tan182206@gmail.com",
+                            FirstName = "Tan",
+                            HashedPassword = "hashed_password_1",
+                            IsDeleted = false,
+                            IsVerify = false,
+                            LastName = "Tran",
+                            Role = "user",
+                            VerifyCode = 0
+                        });
                 });
 
             modelBuilder.Entity("TetPee.Repository.Entity.Cart", b =>
