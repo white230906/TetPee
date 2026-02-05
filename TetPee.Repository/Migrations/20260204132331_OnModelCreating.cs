@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TetPee.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class OnModelCreating : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,14 +55,14 @@ namespace TetPee.Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    HashedPassword = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    ImageUrl = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
+                    HashedPassword = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
                     Address = table.Column<string>(type: "text", nullable: true),
-                    Role = table.Column<string>(type: "text", nullable: false),
+                    Role = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false, defaultValue: "User"),
                     IsVerify = table.Column<bool>(type: "boolean", nullable: false),
                     VerifyCode = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
@@ -122,9 +124,9 @@ namespace TetPee.Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TaxCode = table.Column<string>(type: "text", nullable: false),
-                    CompanyName = table.Column<string>(type: "text", nullable: false),
-                    CampanyAddress = table.Column<string>(type: "text", nullable: false),
+                    TaxCode = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    CompanyName = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    CompanyAddress = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
@@ -275,6 +277,20 @@ namespace TetPee.Repository.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Address", "CreatedAt", "Email", "FirstName", "HashedPassword", "ImageUrl", "IsDeleted", "IsVerify", "LastName", "PhoneNumber", "Role", "UpdatedAt", "VerifyCode" },
+                values: new object[,]
+                {
+                    { new Guid("3438161a-836d-4e51-9168-e27611183d2d"), null, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "tan182205@gmail.com", "Tan", "hashed_password_1", null, false, false, "Tran", null, "user", null, 0 },
+                    { new Guid("66bf31d6-9284-422d-8024-361b45585b76"), null, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "tan182206@gmail.com", "Tan", "hashed_password_1", null, false, false, "Tran", null, "user", null, 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Sellers",
+                columns: new[] { "Id", "CompanyAddress", "CompanyName", "CreatedAt", "IsDeleted", "TaxCode", "UpdatedAt", "UserId" },
+                values: new object[] { new Guid("3acd11e3-69ff-4d3c-ac73-29cd9f7f839c"), "123 Main St, Cityville", "ABC Company", new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), false, "TAXCODE123", null, new Guid("3438161a-836d-4e51-9168-e27611183d2d") });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_UserId",
                 table: "Carts",
@@ -335,6 +351,12 @@ namespace TetPee.Repository.Migrations
                 name: "IX_Sellers_UserId",
                 table: "Sellers",
                 column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
                 unique: true);
         }
 
