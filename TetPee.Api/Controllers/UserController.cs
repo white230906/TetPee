@@ -27,18 +27,30 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     // PARAM: Query string, Path Param, Body Param - dữ liệu gửi kèm theo request
     
     
+    //http://localhost:5000/User?name=abc&age=20
+        //thằng này được gọi là HTTP URL: Uniform Resource Locator
+        //  http://: protocol
+        // localhost: host (domain)
+        //:5000 : port
+        // /User: path
+        // ?name=abc&age=20 -> query string
+    
     //Query String: http://localhost:5000/User?name=abc&age=20
         // name va age là query string
         // Query string nằm sau dấu hỏi ?
+        //Dùng: Filter dữ liệu, Search, Sort / Paging
     //Path(Route) Param: http://localhost:5000/User/123
         //123 là path param hoặc route param
         //ý nghĩa: tôi đang thao tác với user có id = 123
         //Path param nằm trong đường dẫn
+        //Dùng: Xác định chính xác một resource
     //Body Param: Body = dữ liệu gửi trong request, không nằm trên URL
         // {
         //     "username": "abc",
         //     "password": "123"
         // }
+        //Dùng để
+            //Gửi dữ liệu lớn, Dữ liệu nhạy cảm
     
     // GET la ko có body
     // POST, PUT, PATCH có body
@@ -49,7 +61,7 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     // không thể http://localhost:5000/login?username=abc&password=123
 
     //Chuẩn REST FULL API
-    //get all users GET http://localhost:5000/User
+    //get all users GET http://localhost:5000/User: endpoint, API là nơi tập hợp nhiều endpoint
     //create user: POST http://localhost:5000/User
     //get user by id: GET http://localhost:5000/User/{id}
     //update user by id: PUT http://localhost:5000/User/{id}

@@ -18,15 +18,25 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     Rồi tự sinh SQL để chạy vào DB
      */
 
-{
+{   //mấy cái này có nghĩa là gì vậy ?? hihi
+    //tạo các ID cố định(static: chỉ tạo 1 lần duy nhất và dùng chung cho nhiều entity -> FK luôn đúng tuyệt đối),
+    //  dùng cho seed data, special liên kết FK
+    //  nếu không giữ lại ID đó, FK sẽ ko khớp
+    // tại sao lại đặt ở đây, mà ko đặt ở trong OnModelCreating
+        //vì OnModelCreating được gọi khi tạo migration or update DB -> ID thay đổi -> seed data bị vỡ FK
+        
     public static Guid UserId1 = Guid.NewGuid();
     public static Guid UserId2 = Guid.NewGuid();
     public static Guid CateGoryParentId1 = Guid.NewGuid();
     public static Guid CateGoryParentId2 = Guid.NewGuid();
     
+    //constructor của AppDbContext
+    //  nhận cấu hình từ bên ngoài và truyền cho DbContext để
+    //  EF Core biết cách kết nối  database
     public AppDbContext(DbContextOptions<AppDbContext> options) 
         : base(options) { }
     
+    //Db<T>: khai báo bảng trong db thông qua AppDbContext
     public DbSet<User> Users  { get; set; }
     public DbSet<Seller> Sellers  { get; set; }
     public DbSet<Product> Products  { get; set; }
@@ -39,9 +49,15 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     public DbSet<ProductCategory> ProductCategories  { get; set; }
     public DbSet<Category> Categories  { get; set; }
 
+    
+    //Nếu Entity là bản thiết kế cho db
+    //thì OnModelCreating là "luật xây dựng cho db": là nơi cấu hình mô hình dữ liệu (Data Model)
+    //Entity chỉ mô tả dữ liệu có thể có, còn OnModelCreating là nơi bắt database phải tuân theo các quy tắc đó,
+    //bao gồm ràng buộc, quan hệ và dữ liệu khởi tạo
    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // ==================== User Configuration ====================
+        //nói với EF Core tôi đang cấu hình bảng User
         modelBuilder.Entity<User>(builder =>
         {
             builder.Property(u => u.Email)
@@ -81,8 +97,8 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             // Relationship: User has one Seller (one-to-one)
             builder.HasOne(u => u.Seller)
                 .WithOne(s => s.User)
-                .HasForeignKey<Seller>(s => s.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey<Seller>(s => s.UserId) //FK nằm ở Seller
+                .OnDelete(DeleteBehavior.Cascade); // Xóa User -> Seller xóa theo
             
             // DeleteBehavior.Cascade: Khi một User bị xóa, thì Seller liên quan cũng sẽ bị xóa theo.
             // DeleteBehavior.Restrict: Ngăn chặn việc xóa một User nếu có Seller liên quan tồn tại.
@@ -91,7 +107,8 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             // DeleteBehavior.NoAction: Không thực hiện hành động gì đặc biệt khi User bị xóa. ( Gàn giống Restrict, xử lí ở DB)
             // DeleteBehavior.SetNull: Khi một User bị xóa, thì trường UserId trong bảng Seller sẽ được đặt thành NULL.
                 //(Áp dụng khi trường FK cho phép NULL)
-
+    
+            //seed data: giữ liệu được gieo sẵn vào db ngay từ đầu, dùng để test, demo    
             List<User> users = new List<User>()
             {
                 new ()
@@ -126,6 +143,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             }
             
             builder.HasData(users);
+            //dữ liệu được insert vào db
         });
 
         modelBuilder.Entity<Seller>(builder =>
@@ -162,6 +180,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             builder.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(100);
+            
             var categories = new List<Category>()
             {
                 new ()
