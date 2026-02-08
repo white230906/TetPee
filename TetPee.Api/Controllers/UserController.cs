@@ -74,7 +74,9 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     // “Hàm này xử lý request HTTP GET”
     public IActionResult GetUsers([FromQuery] string? searchTerm)//bỏ vào đây ta được là sau dấu chấm hỏi
     {
+        
         var users = _dbContext.Users.ToList();
+        throw new Exception("Get Users Errors");
         return Ok(users);
     }
     

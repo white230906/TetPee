@@ -7,6 +7,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     //kế thừa từ DbContext của EF Core
     //AppContext = cầu nối giữa C# code với DB
     //EF core ko làm việc trực tiếp với DB mà thông qua DbContext
+    //A Tân: class đại diện cho Db và có method thần thánh OnModelCreating, sử dụng cho table
     /*
      _dbContext.Users.Add(user);
     _dbContext.SaveChanges();
@@ -25,10 +26,24 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     // tại sao lại đặt ở đây, mà ko đặt ở trong OnModelCreating
         //vì OnModelCreating được gọi khi tạo migration or update DB -> ID thay đổi -> seed data bị vỡ FK
         
-    public static Guid UserId1 = Guid.NewGuid();
-    public static Guid UserId2 = Guid.NewGuid();
+    public static Guid UserId1 = Guid.NewGuid(); //Seller
+    public static Guid UserId2 = Guid.NewGuid(); //User
+    
+    public static Guid SellerId1 = Guid.NewGuid();
+    
     public static Guid CateGoryParentId1 = Guid.NewGuid();
     public static Guid CateGoryParentId2 = Guid.NewGuid();
+    
+    public static Guid ProductId1 = Guid.NewGuid(); //sau này mình sẽ tạo data trong đơn hàng, tôi phải biết những sản phẩm đã tồn tại
+    public static Guid ProductId2 = Guid.NewGuid();
+    public static Guid ProductId3 = Guid.NewGuid();
+    public static Guid ProductId4 = Guid.NewGuid();
+    
+    public static Guid OrderId1 = Guid.NewGuid();
+    public static Guid OrderId2 = Guid.NewGuid();
+   
+    // public static Guid StorageId1 = Guid.NewGuid();
+    
     
     //constructor của AppDbContext
     //  nhận cấu hình từ bên ngoài và truyền cho DbContext để
@@ -58,6 +73,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     {
         // ==================== User Configuration ====================
         //nói với EF Core tôi đang cấu hình bảng User
+        //tạo schema, set FK, hasdata, seed data
         modelBuilder.Entity<User>(builder =>
         {
             builder.Property(u => u.Email)
@@ -109,6 +125,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 //(Áp dụng khi trường FK cho phép NULL)
     
             //seed data: giữ liệu được gieo sẵn vào db ngay từ đầu, dùng để test, demo    
+            //user gốc: mục đích FK, nghiệp vụ
             List<User> users = new List<User>()
             {
                 new ()
@@ -128,7 +145,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     HashedPassword = "hashed_password_1",
                 }
             };
-
+            //seed data
             for (int i = 0; i <= 1000; i++)
             {
                 var newUser = new User()
@@ -164,11 +181,12 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             {
                 new ()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = SellerId1,
                     TaxCode = "TAXCODE123",
                     CompanyName = "ABC Company",
                     CompanyAddress = "123 Main St, Cityville",
-                    UserId = UserId1,
+                    UserId = UserId1, // tạo seller thì phải có user trước, vì seller là user
+                    //kiếm một thằng id đã tồn tại trong user
                 }
             };
             
@@ -176,7 +194,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         });
 
         modelBuilder.Entity<Category>(builder =>
-        {
+        { 
             builder.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -197,7 +215,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 {
                     Id = Guid.NewGuid(),
                     Name = "Áo thể thao",
-                    ParentId = CateGoryParentId1
+                    ParentId = CateGoryParentId1 //cha của nó đã xác định rồi thì con mới tồn tại
                 },
                 new ()
                 {
@@ -237,13 +255,180 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     };
                     categories.Add(newCategory);
                 }
-                
             }
-            
             builder.HasData(categories);
         });
+
+        modelBuilder.Entity<Product>(builder =>
+        {
+            builder.Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+            
+            builder.Property(p => p.Description)
+                .IsRequired()
+                .HasMaxLength(500);
+            
+            builder.Property(p => p.UrlImage)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            builder.Property(p => p.Price)
+                .IsRequired();
+            
+            // builder.HasOne(p => p.Seller)//Product có 1 user
+            //     .WithMany(s => s.Products)//seller có nhiều product -> =Iclolection<Product>
+            //     .HasForeignKey(s => s.SellerId)
+            //     .OnDelete(DeleteBehavior.Cascade);
+            
+            var products = new List<Product>()
+            {
+                new Product()
+                {
+                    Id = ProductId1,
+                    Name = "Áo Thun Nam",
+                    Description = "Áo thun nam chất liệu cotton cao cấp, thoáng mát, phù hợp cho mọi hoạt động hàng ngày.",
+                    UrlImage = "https://example.com/images/ao_thun_nam.jpg",
+                    Price = 199000m,
+                    SellerId = SellerId1
+                },
+                new Product()
+                {
+                    Id = ProductId2,
+                    Name = "Quần Jeans Nữ",
+                    Description = "Quần jeans nữ dáng ôm, tôn dáng, chất liệu denim co giãn, phù hợp cho mọi dịp.",
+                    UrlImage = "https://example.com/images/quan_jeans_nu.jpg",
+                    Price = 399000m,
+                    SellerId = SellerId1
+                },
+                new Product()
+                {
+                    Id = ProductId3,
+                    Name = "Áo Sơ Mi Nam",
+                    Description = "Áo sơ mi nam công sở, thiết kế hiện đại, chất liệu vải cao cấp, thoáng mát.",
+                    UrlImage = "https://example.com/images/ao_so_mi_nam.jpg",
+                    Price = 299000m,
+                    SellerId = SellerId1
+                },
+                new Product()
+                {
+                    Id = ProductId4,
+                    Name = "Chân Váy Nữ",
+                    Description = "Chân váy nữ xòe, thiết kế trẻ trung, chất liệu vải mềm mại, phù hợp cho mọi dịp.",
+                    UrlImage = "https://example.com/images/chan_vay_nu.jpg",
+                    Price = 249000m,
+                    SellerId = SellerId1
+                }
+            };
+            // for (int i = 0; i <= 1000; i++)
+            // {
+            //     var newProduct = new Product()
+            //     {
+            //         Id = Guid.NewGuid(),
+            //         Name = "T-Shirt" + i,
+            //         Description = "Basic T-Shirt" + i,
+            //         Price = 199000,
+            //         SellerId = SellerId1
+            //     };
+            //     
+            //     products.Add(newProduct);
+            // }
+            
+            builder.HasData(products);
+
+        });
+
+        modelBuilder.Entity<Order>(builder =>
+        {
+            var orders = new List<Order>()
+            {
+                new Order()
+                {
+                    Id = OrderId1,
+                    UserId = UserId2,
+                    Address = "Bien hoa, Dong Nai",
+                    TotalAmount = 10000,
+                    Status = "Completed"
+                },
+                new Order()
+                {
+                    Id = OrderId2,
+                    UserId = UserId2,
+                    Address = "Bien hoa, Dong Nai",
+                    TotalAmount = 10000,
+                    Status = "Completed"
+                },
+            };
+            builder.HasData(orders);
+            
+        });
+
+        modelBuilder.Entity<OrderDetail>(builder =>
+        {
+            var orderDetails = new List<OrderDetail>()
+            {
+                new OrderDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    OrderId = OrderId1,
+                    ProductId = ProductId1,
+                    Quantity = 2,
+                    UnitPrice = 19990000
+                },
+                new OrderDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    OrderId = OrderId1,
+                    ProductId = ProductId2,
+                    Quantity = 1,
+                    UnitPrice = 39990000
+                },
+                new OrderDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    OrderId = OrderId2,
+                    ProductId = ProductId3,
+                    Quantity = 1,
+                    UnitPrice = 29990000
+                },
+            };
+            
+            builder.HasData(orderDetails);
+        });
+    
         
-        
+
+        /* modelBuilder.Entity<Storage>(builder =>
+         {
+             builder.Property(s => s.Price)
+                 .IsRequired();
+
+             builder.Property(s => s.Type)
+                 .IsRequired()
+                 .HasMaxLength(50);
+             var storages = new List<Storage>()
+             {
+                 new()
+                 {
+                     Id = StorageId1,
+                     Price = 23434234,
+                     Type = "hihi",
+                 }
+             };
+
+             for (int i = 0; i <= 1000; i++)
+             {
+                 var storage = new Storage()
+                 {
+                     Id = Guid.NewGuid(),
+                     Price = 23434234 + i,
+                     Type = "hihi" + i,
+                 };
+                 storages.Add(storage);
+             }
+
+             builder.HasData(storages);
+         });*/
+
     }
 }
-//xong category với có 1000 user trong db
