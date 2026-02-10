@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using TetPee.Repository.Entity;
 
 namespace TetPee.Repository;
+/*
+ * lệnh scaffold DbContext,
+ * lênh này dùng cho db first(mapping ngược lại từ db vào code)
+ */
 
 public class AppDbContext : DbContext//là một thằng đại diện cho db
     //kế thừa từ DbContext của EF Core
@@ -25,6 +29,11 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     //  nếu không giữ lại ID đó, FK sẽ ko khớp
     // tại sao lại đặt ở đây, mà ko đặt ở trong OnModelCreating
         //vì OnModelCreating được gọi khi tạo migration or update DB -> ID thay đổi -> seed data bị vỡ FK
+    //key: làm sao để xác định được thằng nào nên tạo Id cố định trên này
+        //thằng nào phụ thuộc vào thằng nào thì tạo
+        //Vi dụ: seller chỉ tồn tại khi có user tồn tại (set ID cố định user) -> user tồn tại thì seller mới có
+        // N-N: thằng trung gian thì chứa 2 FK ở giữa á kkk -> 2 thằng đó phải làm gốc
+        // 1-N: thì khóa ngoại nằm ở N - 1 làm gốc: Product với Seller -> User
         
     public static Guid UserId1 = Guid.NewGuid(); //Seller
     public static Guid UserId2 = Guid.NewGuid(); //User
@@ -73,7 +82,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     {
         // ==================== User Configuration ====================
         //nói với EF Core tôi đang cấu hình bảng User
-        //tạo schema, set FK, hasdata, seed data
+        //tạo schema, set FK, hasData, seed data
         modelBuilder.Entity<User>(builder =>
         {
             builder.Property(u => u.Email)
@@ -275,10 +284,10 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
 
             builder.Property(p => p.Price)
                 .IsRequired();
-            
-            // builder.HasOne(p => p.Seller)//Product có 1 user
+            //sai - đã fixed
+            // builder.HasOne(p => p.Seller)//Product có 1 seller
             //     .WithMany(s => s.Products)//seller có nhiều product -> =Iclolection<Product>
-            //     .HasForeignKey(s => s.SellerId)
+            //     .HasForeignKey(p => p.SellerId)
             //     .OnDelete(DeleteBehavior.Cascade);
             
             var products = new List<Product>()
@@ -342,7 +351,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         {
             var orders = new List<Order>()
             {
-                new Order()
+                new ()
                 {
                     Id = OrderId1,
                     UserId = UserId2,
@@ -350,7 +359,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     TotalAmount = 10000,
                     Status = "Completed"
                 },
-                new Order()
+                new ()
                 {
                     Id = OrderId2,
                     UserId = UserId2,
@@ -367,7 +376,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         {
             var orderDetails = new List<OrderDetail>()
             {
-                new OrderDetail()
+                new ()
                 {
                     Id = Guid.NewGuid(),
                     OrderId = OrderId1,
@@ -375,7 +384,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Quantity = 2,
                     UnitPrice = 19990000
                 },
-                new OrderDetail()
+                new ()
                 {
                     Id = Guid.NewGuid(),
                     OrderId = OrderId1,
@@ -397,7 +406,6 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         });
     
         
-
         /* modelBuilder.Entity<Storage>(builder =>
          {
              builder.Property(s => s.Price)
