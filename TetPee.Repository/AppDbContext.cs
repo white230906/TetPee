@@ -51,7 +51,8 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     public static Guid OrderId1 = Guid.NewGuid();
     public static Guid OrderId2 = Guid.NewGuid();
    
-    // public static Guid StorageId1 = Guid.NewGuid();
+    public static Guid StorageId1 = Guid.NewGuid();
+    
     
     
     //constructor của AppDbContext
@@ -83,6 +84,10 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         // ==================== User Configuration ====================
         //nói với EF Core tôi đang cấu hình bảng User
         //tạo schema, set FK, hasData, seed data
+        
+        var userIds = new List<Guid>();
+        var productIds = new List<Guid>();
+        
         modelBuilder.Entity<User>(builder =>
         {
             builder.Property(u => u.Email)
@@ -135,7 +140,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     
             //seed data: giữ liệu được gieo sẵn vào db ngay từ đầu, dùng để test, demo    
             //user gốc: mục đích FK, nghiệp vụ
-            List<User> users = new List<User>()
+            var users = new List<User>()
             {
                 new ()
                 {
@@ -155,11 +160,16 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 }
             };
             //seed data
+            
+            
             for (int i = 0; i <= 1000; i++)
             {
+                var id =  Guid.NewGuid();
+                userIds.Add(id);
+                
                 var newUser = new User()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = id,
                     Email = "Tan" + i + "@gmail.com",
                     FirstName = "Tan" + i,
                     LastName = "Tran" + i,
@@ -185,8 +195,13 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             builder.Property(s => s.CompanyAddress)
                 .IsRequired()
                 .HasMaxLength(500);
-
-            var seller = new List<Seller>()
+            
+             // builder.HasOne(s => s.User) //1 seller - 1 user
+             //     .WithOne(u => u.Seller)
+             //     .HasForeignKey<Seller>(s => s.UserId)
+             //     .OnDelete(DeleteBehavior.Cascade);
+            
+            var sellers = new List<Seller>()
             {
                 new ()
                 {
@@ -198,8 +213,21 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     //kiếm một thằng id đã tồn tại trong user
                 }
             };
-            
-            builder.HasData(seller);
+            int i = 1;
+            foreach (var userId in userIds)
+            {
+                var newSeller = new Seller()
+                {
+                    Id = Guid.NewGuid(),
+                    TaxCode = "TAXCODE" + i,
+                    CompanyName = "ABC Company" + i,
+                    CompanyAddress = "123 Main St, Cityville" + i,
+                    UserId = userId,
+                };
+                i++;
+                sellers.Add(newSeller);
+            }
+            builder.HasData(sellers);
         });
 
         modelBuilder.Entity<Category>(builder =>
@@ -207,6 +235,11 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             builder.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(100);
+            
+            builder.HasOne(p => p.Parent)
+                .WithMany(p =>  p.Children)
+                .HasForeignKey(p => p.ParentId)
+                .OnDelete(DeleteBehavior.Cascade);
             
             var categories = new List<Category>()
             {
@@ -284,15 +317,16 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
 
             builder.Property(p => p.Price)
                 .IsRequired();
-            //sai - đã fixed
-            // builder.HasOne(p => p.Seller)//Product có 1 seller
-            //     .WithMany(s => s.Products)//seller có nhiều product -> =Iclolection<Product>
-            //     .HasForeignKey(p => p.SellerId)
-            //     .OnDelete(DeleteBehavior.Cascade);
             
+             builder.HasOne(p => p.Seller)//Product có 1 seller
+                 .WithMany(s => s.Products)//seller có nhiều product -> =Iclolection<Product>
+                 .HasForeignKey(p => p.SellerId)
+                 .OnDelete(DeleteBehavior.Cascade);
+             
+             
             var products = new List<Product>()
             {
-                new Product()
+                new ()
                 {
                     Id = ProductId1,
                     Name = "Áo Thun Nam",
@@ -301,7 +335,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Price = 199000m,
                     SellerId = SellerId1
                 },
-                new Product()
+                new ()
                 {
                     Id = ProductId2,
                     Name = "Quần Jeans Nữ",
@@ -310,7 +344,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Price = 399000m,
                     SellerId = SellerId1
                 },
-                new Product()
+                new ()
                 {
                     Id = ProductId3,
                     Name = "Áo Sơ Mi Nam",
@@ -319,7 +353,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Price = 299000m,
                     SellerId = SellerId1
                 },
-                new Product()
+                new ()
                 {
                     Id = ProductId4,
                     Name = "Chân Váy Nữ",
@@ -329,19 +363,21 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     SellerId = SellerId1
                 }
             };
-            // for (int i = 0; i <= 1000; i++)
-            // {
-            //     var newProduct = new Product()
-            //     {
-            //         Id = Guid.NewGuid(),
-            //         Name = "T-Shirt" + i,
-            //         Description = "Basic T-Shirt" + i,
-            //         Price = 199000,
-            //         SellerId = SellerId1
-            //     };
-            //     
-            //     products.Add(newProduct);
-            // }
+            for (int i = 0; i <= 1000; i++)
+            {
+                var id = Guid.NewGuid();
+                productIds.Add(id);
+                var newProduct = new Product()
+                {
+                    Id = id,
+                    Name = "T-Shirt" + i,
+                    Description = "Basic T-Shirt" + i,
+                    Price = 199000,
+                    SellerId = SellerId1
+                };
+                
+                products.Add(newProduct);
+            }
             
             builder.HasData(products);
 
@@ -349,6 +385,23 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
 
         modelBuilder.Entity<Order>(builder =>
         {
+            builder.Property(o =>  o.Status)
+                .IsRequired()
+                .HasMaxLength(100);
+            
+            builder.Property(o => o.TotalAmount)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
+            
+            builder.Property(o => o.Status)
+                .IsRequired()
+                .HasMaxLength(100);
+            
+            builder.HasOne(o => o.User)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
             var orders = new List<Order>()
             {
                 new ()
@@ -368,12 +421,38 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Status = "Completed"
                 },
             };
+            int i = 1;
+            foreach (var userId in userIds)
+            {
+                var newOrder = new Order()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Address = "Bien hoa, Dong Nai" + i,
+                    TotalAmount = 10000 + i,
+                    Status = "Completed" + i
+                };
+                i++;
+                orders.Add(newOrder);
+            }
+            
             builder.HasData(orders);
             
         });
 
         modelBuilder.Entity<OrderDetail>(builder =>
         {
+            
+            builder.HasOne(o => o.Order)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(o => o.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.HasOne(o => o.Product)
+                .WithMany(p => p.OrderDetails)
+                .HasForeignKey(o => o.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
             var orderDetails = new List<OrderDetail>()
             {
                 new ()
@@ -392,7 +471,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     Quantity = 1,
                     UnitPrice = 39990000
                 },
-                new OrderDetail()
+                new ()
                 {
                     Id = Guid.NewGuid(),
                     OrderId = OrderId2,
@@ -401,12 +480,106 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     UnitPrice = 29990000
                 },
             };
+
+            for (int i = 0; i <= 1000; i++)
+            {
+                var newOrderDetail = new OrderDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    OrderId = OrderId1,
+                    ProductId = ProductId1,
+                    Quantity = 2,
+                    UnitPrice = 19990000
+                };
+                orderDetails.Add(newOrderDetail);
+            }
             
             builder.HasData(orderDetails);
         });
-    
         
-        /* modelBuilder.Entity<Storage>(builder =>
+        modelBuilder.Entity<Cart>(builder =>
+        {
+            builder.Property(c => c.TotalAmount)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
+            
+            builder.HasOne(c => c.User)
+                .WithOne(u => u.Cart)
+                .HasForeignKey<Cart>(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            var carts = new List<Cart>();
+            foreach (var userid in userIds)
+            {
+                var newCart = new Cart()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userid,
+                    TotalAmount = 10000m,
+                };
+                carts.Add(newCart);
+            }
+
+            builder.HasData(carts);
+        });
+
+        modelBuilder.Entity<ProductCategory>(builder =>
+        {
+            builder.HasOne(p => p.Category)
+                .WithMany(c => c.ProductCategories)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(p => p.Product)
+                .WithMany(p => p.ProductCategories)
+                .HasForeignKey(p => p.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            var productCategories = new List<ProductCategory>();
+            for (int i = 0; i <= 1000; i++)
+            {
+                var newProductCategory = new ProductCategory()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductID = ProductId1,
+                    CategoryId = CateGoryParentId1
+                };
+                productCategories.Add(newProductCategory);
+            }
+
+            builder.HasData(productCategories);
+        });
+
+        modelBuilder.Entity<Inventory>(builder =>
+        {
+            builder.Property(i => i.TotalSell)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
+            
+            builder.Property(i => i.TotalInStock)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
+            
+            builder.HasOne(i => i.Product)
+                .WithOne(p => p.Inventory)
+                .HasForeignKey<Inventory>(i => i.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            var inventories =  new List<Inventory>();
+            foreach (var productId in productIds)
+            {
+                var newInventory = new Inventory()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductId = productId,
+                    TotalSell = 1000,
+                    TotalInStock =  1000,
+                };
+                inventories.Add(newInventory);
+            }
+            builder.HasData(inventories);
+        });
+
+        modelBuilder.Entity<Storage>(builder =>
          {
              builder.Property(s => s.Price)
                  .IsRequired();
@@ -414,29 +587,56 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
              builder.Property(s => s.Type)
                  .IsRequired()
                  .HasMaxLength(50);
+             
              var storages = new List<Storage>()
              {
                  new()
                  {
                      Id = StorageId1,
-                     Price = 23434234,
-                     Type = "hihi",
+                     Price = 10000,
+                     Type = "store",
                  }
              };
 
-             for (int i = 0; i <= 1000; i++)
+             for (int i = 0; i <= 500; i++)
              {
                  var storage = new Storage()
                  {
                      Id = Guid.NewGuid(),
-                     Price = 23434234 + i,
-                     Type = "hihi" + i,
+                     Price = 10000,
+                     Type = "store",
                  };
                  storages.Add(storage);
              }
 
              builder.HasData(storages);
-         });*/
+         });
 
+        modelBuilder.Entity<ProductStorage>(builder =>
+        {
+            builder.HasOne(p => p.Product)
+                .WithMany(p => p.ProductStorages)
+                .HasForeignKey(p => p.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.HasOne(p => p.Storage)
+                .WithMany(p => p.ProductStorages)
+                .HasForeignKey(p => p.StorageId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            var productStorages =  new List<ProductStorage>();
+            for (int i = 0; i <= 200; i++)
+            {
+                var newProductStorage = new ProductStorage()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductId = ProductId1,
+                    StorageId = StorageId1,
+                };
+                productStorages.Add(newProductStorage);
+            }
+
+            builder.HasData(productStorages);
+        });
     }
 }

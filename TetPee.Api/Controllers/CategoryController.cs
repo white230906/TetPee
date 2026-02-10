@@ -11,6 +11,12 @@ namespace TetPee.Api.Controllers;
 public class CategoryController: ControllerBase
 {
     private readonly AppDbContext _dbContext;
+    //Chuẩn REST FULL API
+    //get all Categories GET http://localhost:5000/Category: endpoint, API là nơi tập hợp nhiều endpoint
+    //create Category: POST http://localhost:5000/Category
+    //get Category by id: GET http://localhost:5000/Category/{id}
+    //update Category by id: PUT http://localhost:5000/Category/{id}
+    //delete Category by id: DELETE http://localhost:5000/Category/{id}
     
     public CategoryController(AppDbContext dbContext)
     {

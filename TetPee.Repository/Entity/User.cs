@@ -22,6 +22,8 @@ public class User: BaseEntity<Guid>, IAuditableEntity
         // Quartz
         // Cron job
     public Seller? Seller { get; set; }
+    
+    public Cart Cart { get; set; }
     public ICollection<Order>  Orders { get; set; } = new List<Order>();
     //mối qh một nhiều cho ORM nó generate xuống db
     
