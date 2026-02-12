@@ -22,7 +22,7 @@ public class Request// gọi là DTO(Data Transfer Object): là gì ?
 // Chỉ chứa những field được phép nhập từ client
 // Vì sao không dùng User entity luôn?
 // Tránh client set bậy IsDeleted
-// Tránh client set Role
+// Tránh client set Role    
 // Tránh client set Id
 // ➡️ Bảo vệ domain
     
