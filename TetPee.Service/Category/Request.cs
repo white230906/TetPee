@@ -12,4 +12,10 @@ public class Request
     {
         public Guid Id { get; set; }
     }
+    
+    public class DeleteCategoryRequest
+    {
+        public Guid Id { get; set; }
+    }
+    
 }

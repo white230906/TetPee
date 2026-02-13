@@ -55,7 +55,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpPut("{id}")]
-    public IActionResult UpdateCategories(Guid id, [FromBody] Request.CreateCategoryRequest request)
+    public IActionResult UpdateCategories(Guid id, [FromBody] Request.UpdateCategoryRequest request)
     {
         // var users = _dbContext.Users.ToList();
         // return Ok(users);
@@ -63,7 +63,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpDelete("{id}")]
-    public IActionResult DeleteCategories(Guid id)
+    public IActionResult DeleteCategories(Guid id, [FromBody] Request.DeleteCategoryRequest request)
     {
         // var users = _dbContext.Users.ToList();
         // return Ok(users);
