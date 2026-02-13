@@ -10,7 +10,7 @@ public class Request// gọi là DTO(Data Transfer Object): là gì ?
     Service dùng DTO để xử lý
      */
 {
-    public class CreateUserRequest
+    public class CreateUserRequest //DTO
     {
         public required string Email {get; set;}
         public required string FirstName {get; set;}

@@ -69,9 +69,9 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     
     // update user by id: http://localhost:5000/User/id/update - sai
     
-    [HttpGet("")]
-    // Đây là attribute nói với ASP.NET:
-    // “Hàm này xử lý request HTTP GET”
+    [HttpGet("")] // bỏ trong dấu "" - thì nó sẽ map tới đó
+    //Attribute - Attribute là một “metadata” gắn lên method để nói với ASP.NET biết:
+        //Method này xử lý HTTP GET request.
     public IActionResult GetUsers([FromQuery] string? searchTerm)//bỏ vào đây ta được là sau dấu chấm hỏi
     {
         
@@ -102,8 +102,8 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
             HashedPassword = request.Password
         };
         
-        _dbContext.Users.Add(user);// à tôi mới tạo câu lệnh
-        _dbContext.SaveChanges(); // mang câu lệnh xuống bd để apply
+        _dbContext.Users.Add(user);// add thằng user vừa mới tạo vào bẳng User nha
+        _dbContext.SaveChanges(); // hoàn tất nếu có dòng này, lưu thay đổi
          
         Console.WriteLine(request);
         return Ok("Get all users");
