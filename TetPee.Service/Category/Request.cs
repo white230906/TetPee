@@ -13,9 +13,8 @@ public class Request
         public Guid Id { get; set; }
     }
     
-    public class DeleteCategoryRequest
+    public class DeleteCategoryRequest: CreateCategoryRequest
     {
         public Guid Id { get; set; }
     }
-    
 }
