@@ -15,12 +15,15 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     //cung cấp sẵn cho mình các response chuẩn
 {
     private readonly AppDbContext _dbContext;
+
+    private readonly IService _userService;
     //cái này tìm hiểu sau
     //công cụ để nói chuyện với db
     //readonly: chỉ gán một lần, không đổi lung tung
-    public UserController(AppDbContext dbContext)
+    public UserController(AppDbContext dbContext, IService  userService)
     {
         _dbContext = dbContext;
+        _userService = userService;
     }
     
     // HTTP Method: GET, POST, DELETE, PUT, PATCH - nói với server: tôi muốn làm gì?
@@ -72,20 +75,20 @@ public class UserController: ControllerBase//nơi khai báo các endpoint(URL + 
     [HttpGet("")] // bỏ trong dấu "" - thì nó sẽ map tới đó
     //Attribute - Attribute là một “metadata” gắn lên method để nói với ASP.NET biết:
         //Method này xử lý HTTP GET request.
-    public IActionResult GetUsers([FromQuery] string? searchTerm)//bỏ vào đây ta được là sau dấu chấm hỏi
+    public async Task<IActionResult> GetUsers([FromQuery] string? searchTerm, int pageSize = 10, int pageIndex = 1)//bỏ vào đây ta được là sau dấu chấm hỏi
     {
         
-        var users = _dbContext.Users.ToList();
-        throw new Exception("Get Users Errors");
+        var users = await _userService.GetUsers(searchTerm, pageSize, pageIndex);
+ 
+        // throw new Exception("Get Users Error");
         return Ok(users);
     }
     
     [HttpGet("{id}")] //path param: biến trên đường dẫn
-    public IActionResult GetUsers([FromRoute]Guid id) // bỏ vầo đây là ta được sau dấu / -> về test lại nha
+    public async Task<IActionResult> GetUsers([FromRoute]Guid id) // bỏ vầo đây là ta được sau dấu / -> về test lại nha
     {
-        // var users = _dbContext.Users.ToList();
-        // return Ok(users);
-        return Ok(id);
+        var users = await _userService.GetUsersById(id);
+        return Ok(users);
     }
     
     [HttpPost("")]

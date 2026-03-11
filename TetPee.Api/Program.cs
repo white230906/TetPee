@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TetPee.Api.Middleware;
 using TetPee.Repository;
+using TetPee.Service.User;
+
 //khai báo những cái đồ chơi mà mình sài
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
+builder.Services.AddScoped<IService, Service>();
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();//học
+
 
 var app = builder.Build();
 //sài đồ chơi nào thì bỏ dưới câu lệnh này
