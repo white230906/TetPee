@@ -42,6 +42,10 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     
     public static Guid CateGoryParentId1 = Guid.NewGuid();
     public static Guid CateGoryParentId2 = Guid.NewGuid();
+    public static Guid CateGoryParentId3 = Guid.NewGuid();
+    public static Guid CateGoryParentId4 = Guid.NewGuid();
+    public static Guid CateGoryParentId5 = Guid.NewGuid();
+    public static Guid CateGoryParentId6 = Guid.NewGuid();
     
     public static Guid ProductId1 = Guid.NewGuid(); //sau này mình sẽ tạo data trong đơn hàng, tôi phải biết những sản phẩm đã tồn tại
     public static Guid ProductId2 = Guid.NewGuid();
@@ -119,10 +123,10 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 .IsRequired()
                 .HasMaxLength(500);
             
-            builder.Property(u => u.Role)
-                .IsRequired()
-                .HasMaxLength(20)
-                .HasDefaultValue("User");
+            // builder.Property(u => u.Role)
+            //     .IsRequired()
+            //     .HasMaxLength(20)
+            //     .HasDefaultValue("User");
             
             // Relationship: User has one Seller (one-to-one)
             builder.HasOne(u => u.Seller)
@@ -162,20 +166,37 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
             //seed data
             
             
-            for (int i = 0; i <= 1000; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 var id =  Guid.NewGuid();
                 userIds.Add(id);
-                
-                var newUser = new User()
+
+                if (i % 2 == 0)
                 {
-                    Id = id,
-                    Email = "Tan" + i + "@gmail.com",
-                    FirstName = "Tan" + i,
-                    LastName = "Tran" + i,
-                    HashedPassword = "hashed_password_" + i,
-                };
-                users.Add(newUser);
+                    var newUser = new User()
+                    {
+                        Id = id,
+                        Role = "user",
+                        Email = "Tan" + i + "@gmail.com",
+                        FirstName = "Tan" + i,
+                        LastName = "Tran" + i,
+                        HashedPassword = "hashed_password_" + i,
+                    };
+                    users.Add(newUser);
+                }
+                else
+                {
+                    var newUser = new User()
+                    {
+                        Id = id,
+                        Role = "seller",
+                        Email = "Tan" + i + "@gmail.com",
+                        FirstName = "Tan" + i,
+                        LastName = "Tran" + i,
+                        HashedPassword = "hashed_password_" + i,
+                    };
+                    users.Add(newUser);
+                }
             }
             
             builder.HasData(users);
@@ -255,33 +276,39 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 },
                 new ()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = CateGoryParentId3,
                     Name = "Áo thể thao",
                     ParentId = CateGoryParentId1 //cha của nó đã xác định rồi thì con mới tồn tại
                 },
                 new ()
                 {
-                    Id = Guid.NewGuid(),
+                    Id =CateGoryParentId4,
                     Name = "Áo ba lỗ",
                     ParentId = CateGoryParentId1
                 },
                 new ()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = CateGoryParentId5,
                     Name = "Quần Jean",
+                    ParentId = CateGoryParentId2
+                },
+                new ()
+                {
+                    Id = CateGoryParentId6,
+                    Name = "Quần Kaki",
                     ParentId = CateGoryParentId2
                 },
             };
 
-            for (int i = 1; i <= 1000; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 if (i % 2 == 0)
                 {
                     var newCategory = new Category()
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Áo " + i,
-                        ParentId = CateGoryParentId1
+                        Name = "Áo thể thao" + i,
+                        ParentId = CateGoryParentId3
                                    
                     };
                     categories.Add(newCategory);
@@ -291,8 +318,8 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     var newCategory = new Category()
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Quần " + i,
-                        ParentId = CateGoryParentId2
+                        Name = "Quần Jean" + i,
+                        ParentId =CateGoryParentId5
                                    
                     };
                     categories.Add(newCategory);
@@ -363,7 +390,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     SellerId = SellerId1
                 }
             };
-            for (int i = 0; i <= 1000; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 var id = Guid.NewGuid();
                 productIds.Add(id);
@@ -481,7 +508,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 },
             };
 
-            for (int i = 0; i <= 1000; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 var newOrderDetail = new OrderDetail()
                 {
@@ -536,7 +563,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 .OnDelete(DeleteBehavior.Cascade);
 
             var productCategories = new List<ProductCategory>();
-            for (int i = 0; i <= 1000; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 var newProductCategory = new ProductCategory()
                 {
@@ -598,7 +625,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                  }
              };
 
-             for (int i = 0; i <= 500; i++)
+             for (int i = 0; i <= 100; i++)
              {
                  var storage = new Storage()
                  {
@@ -625,7 +652,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 .OnDelete(DeleteBehavior.Cascade);
             
             var productStorages =  new List<ProductStorage>();
-            for (int i = 0; i <= 200; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 var newProductStorage = new ProductStorage()
                 {

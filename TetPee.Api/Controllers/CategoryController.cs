@@ -11,35 +11,30 @@ namespace TetPee.Api.Controllers;
 public class CategoryController: ControllerBase
 {
     private readonly AppDbContext _dbContext;
-    //Chuẩn REST FULL API
-    //get all Categories GET http://localhost:5000/Category: endpoint, API là nơi tập hợp nhiều endpoint
-    //create Category: POST http://localhost:5000/Category
-    //get Category by id: GET http://localhost:5000/Category/{id}
-    //update Category by id: PUT http://localhost:5000/Category/{id}
-    //delete Category by id: DELETE http://localhost:5000/Category/{id}
+    private readonly IServiceCategory  _categoryService;
     
-    public CategoryController(AppDbContext dbContext)
+    public CategoryController(AppDbContext dbContext, IServiceCategory categoryService)
     {
         _dbContext = dbContext;
+        _categoryService = categoryService;
     }
 
     [HttpGet("")]
-    public IActionResult GetCategories()
+    public async Task<IActionResult> GetCategories([FromQuery] string? searchTerm)
     {
-        var categories = _dbContext.Categories.ToList();
+        var categories = await _categoryService.GetCategory(searchTerm);
         return Ok(categories);
     }
     
-    [HttpGet("{id}")]
-    public IActionResult GetCategories(Guid id)
+    [HttpGet("{parentId}")]
+    public async Task<IActionResult> GetCategories([FromRoute]Guid parentId)
     {
-        // var categories = _dbContext.Categories.ToList();
-        // return Ok(categories);
-        return Ok(_dbContext.Categories.Find(id)); // có xử lí trường hợp null không
+        var categoires =  await _categoryService.GetCategoryByParentId(parentId);
+        return Ok(categoires);
     }
     
     [HttpPost("")]
-    public IActionResult CreateCategories([FromBody] Request.CreateCategoryRequest request)
+    public IActionResult CreateCategories([FromBody] RequestCategory.CreateCategoryRequest request)
     {
         var category = new Category()
         {
@@ -55,7 +50,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpPut("{id}")]
-    public IActionResult UpdateCategories(Guid id, [FromBody] Request.UpdateCategoryRequest request)
+    public IActionResult UpdateCategories(Guid id, [FromBody] RequestCategory.CreateCategoryRequest request)
     {
         // var users = _dbContext.Users.ToList();
         // return Ok(users);
@@ -63,7 +58,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpDelete("{id}")]
-    public IActionResult DeleteCategories(Guid id, [FromBody] Request.DeleteCategoryRequest request)
+    public IActionResult DeleteCategories(Guid id)
     {
         // var users = _dbContext.Users.ToList();
         // return Ok(users);
