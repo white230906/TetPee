@@ -34,7 +34,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpPost("")]
-    public IActionResult CreateCategories([FromBody] Request.CreateCategoryRequest request)
+    public IActionResult CreateCategories([FromBody] RequestCategory.CreateCategoryRequest request)
     {
         var category = new Category()
         {
@@ -50,7 +50,7 @@ public class CategoryController: ControllerBase
     }
     
     [HttpPut("{id}")]
-    public IActionResult UpdateCategories(Guid id, [FromBody] Request.CreateCategoryRequest request)
+    public IActionResult UpdateCategories(Guid id, [FromBody] RequestCategory.CreateCategoryRequest request)
     {
         // var users = _dbContext.Users.ToList();
         // return Ok(users);

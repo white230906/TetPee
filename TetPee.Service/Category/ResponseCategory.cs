@@ -1,6 +1,6 @@
 namespace TetPee.Service.Category;
 
-public class Response
+public class ResponseCategory
 { 
     public class GetCateGoryResponse
     {

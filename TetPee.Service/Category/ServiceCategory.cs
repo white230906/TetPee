@@ -12,7 +12,7 @@ public class ServiceCategory: IServiceCategory
         _dbcontext = dbContext;
     }
     
-    public async Task<List<Response.GetCateGoryResponse>> GetCategory(string? searchTerm)
+    public async Task<List<ResponseCategory.GetCateGoryResponse>> GetCategory(string? searchTerm)
     {
         var query = _dbcontext.Categories.Where(x => true);
         if (searchTerm != null)
@@ -22,7 +22,7 @@ public class ServiceCategory: IServiceCategory
         
         query = query.OrderBy(x => x.Name);
         
-        var selectedQuery = query.Select(x => new Response.GetCateGoryResponse()
+        var selectedQuery = query.Select(x => new ResponseCategory.GetCateGoryResponse()
         {
             Id = x.Id,
             Name = x.Name,
@@ -32,11 +32,11 @@ public class ServiceCategory: IServiceCategory
         return result;
     }
 
-    public async Task<List<Response.GetCateGoryResponse>> GetCategoryByParentId(Guid parentId)
+    public async Task<List<ResponseCategory.GetCateGoryResponse>> GetCategoryByParentId(Guid parentId)
     {
         var query = _dbcontext.Categories.Where(x => x.ParentId == parentId);
         query = query.OrderBy(x => x.Name);
-        var selectedQuery = query.Select(x => new Response.GetCateGoryResponse()
+        var selectedQuery = query.Select(x => new ResponseCategory.GetCateGoryResponse()
         {
             Id = x.Id,
             Name = x.Name,

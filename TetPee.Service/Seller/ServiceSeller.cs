@@ -12,7 +12,7 @@ public class ServiceSeller: IServiceSeller
         _dbContext = dbContext;
     }
     
-    public async Task<Base.Response.PageResult<Response.GetSellerResponse>> GetSellers(string? searchTerm, int pageSize, int pageIndex)
+    public async Task<Base.Response.PageResult<ResponseSeller.GetSellerResponse>> GetSellers(string? searchTerm, int pageSize, int pageIndex)
     {
         var query = _dbContext.Users.Where(x => x.Role == "seller");
         if (searchTerm != null)
@@ -25,9 +25,8 @@ public class ServiceSeller: IServiceSeller
             .Skip((pageIndex - 1) * pageSize)
             .Take(pageSize);
 
-        var selectedQuery = query.Select(x => new Response.GetSellerResponse()
+        var selectedQuery = query.Select(x => new ResponseSeller.GetSellerResponse()
         {
-            Id = x.Id,
             FirstName = x.FirstName,
             LastName = x.LastName,
             Email = x.Email,
@@ -39,7 +38,7 @@ public class ServiceSeller: IServiceSeller
         var listResult = await selectedQuery.ToListAsync();
         var totalItems = listResult.Count;
 
-        var result = new Base.Response.PageResult<Response.GetSellerResponse>()
+        var result = new Base.Response.PageResult<ResponseSeller.GetSellerResponse>()
         {
             Items = listResult,
             PageIndex =  pageIndex,
@@ -50,10 +49,12 @@ public class ServiceSeller: IServiceSeller
 
     }
 
-    public async Task<Response.GetSellerResponse> GetSellersById(Guid sellerId)
+    public async Task<ResponseSeller.GetSellerDetailResponse> GetSellersById(Guid sellerId)
     {
-        var query = _dbContext.Users.Where(x => x.Id == sellerId && x.Role == "seller");
-        var selectedQuery = query.Select(x => new Response.GetSellerResponse()
+        var query = _dbContext.Users.Where(x => x.Id == sellerId 
+                                                            && x.Role == "seller");
+        var selectedQuery = query
+            .Select(x => new ResponseSeller.GetSellerDetailResponse()
         {
             Email = x.Email,
             FirstName = x.FirstName,

@@ -1,6 +1,6 @@
 namespace TetPee.Service.Category;
 
-public class Request
+public class RequestCategory
 {
     public class CreateCategoryRequest // DTO
     {
