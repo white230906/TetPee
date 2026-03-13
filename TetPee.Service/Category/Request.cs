@@ -2,7 +2,7 @@ namespace TetPee.Service.Category;
 
 public class Request
 {
-    public class CreateCategoryRequest
+    public class CreateCategoryRequest // DTO
     {
         public required string Name { get; set; }
         public Guid? ParentId { get; set; }
