@@ -13,7 +13,7 @@ public class ServiceSeller: IServiceSeller
     }
     
     public async Task<Base.Response.PageResult<ResponseSeller.GetSellerResponse>> GetSellers(string? searchTerm, int pageSize, int pageIndex)
-    {
+    {//đi từ role thì nó chưa tối ưu performance vì trong user có nhiều role mà
         var query = _dbContext.Users.Where(x => x.Role == "seller");
         if (searchTerm != null)
         {
@@ -31,7 +31,7 @@ public class ServiceSeller: IServiceSeller
             LastName = x.LastName,
             Email = x.Email,
             ImageUrl = x.ImageUrl,
-            TaxCode = x.Seller.TaxCode,
+            TaxCode = x.Seller!.TaxCode,//à tôi biết rồi
             CompanyName = x.Seller.CompanyName,
         });
 
@@ -66,7 +66,6 @@ public class ServiceSeller: IServiceSeller
             TaxCode =  x.Seller.TaxCode,
             CompanyName = x.Seller.CompanyName,
             CompanyAddress = x.Seller.CompanyAddress,
-
         });
 
         var result = await selectedQuery.FirstOrDefaultAsync();

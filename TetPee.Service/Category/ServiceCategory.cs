@@ -40,6 +40,7 @@ public class ServiceCategory: IServiceCategory
         {
             Id = x.Id,
             Name = x.Name,
+            ParentId =  x.ParentId,
         });
 
         var result = await selectedQuery.ToListAsync();
