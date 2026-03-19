@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Repository;
 using TetPee.Repository.Entity;
@@ -10,58 +11,25 @@ namespace TetPee.Api.Controllers;
 [Route("[controller]")]
 public class CategoryController: ControllerBase
 {
-    private readonly AppDbContext _dbContext;
     private readonly IServiceCategory  _categoryService;
     
-    public CategoryController(AppDbContext dbContext, IServiceCategory categoryService)
+    public CategoryController(IServiceCategory categoryService)
     {
-        _dbContext = dbContext;
         _categoryService = categoryService;
     }
-
+    [Authorize]
     [HttpGet("")]
-    public async Task<IActionResult> GetCategories([FromQuery] string? searchTerm)
+    public async Task<IActionResult> GetCategories(string? searchTerm)
     {
         var categories = await _categoryService.GetCategory(searchTerm);
         return Ok(categories);
     }
     
-    [HttpGet("{parentId}")]
-    public async Task<IActionResult> GetCategories([FromRoute]Guid parentId)
+    [HttpGet("{parentId}/childrens")]
+    public async Task<IActionResult> GetCategories(Guid parentId)
     {
         var categoires =  await _categoryService.GetCategoryByParentId(parentId);
         return Ok(categoires);
     }
     
-    [HttpPost("")]
-    public IActionResult CreateCategories([FromBody] RequestCategory.CreateCategoryRequest request)
-    {
-        var category = new Category()
-        {
-            Name = request.Name,
-            ParentId  =  request.ParentId
-        };
-
-        _dbContext.Categories.Add(category);
-        _dbContext.SaveChanges();
-
-        Console.WriteLine(request);
-        return Ok(category);
-    }
-    
-    [HttpPut("{id}")]
-    public IActionResult UpdateCategories(Guid id, [FromBody] RequestCategory.CreateCategoryRequest request)
-    {
-        // var users = _dbContext.Users.ToList();
-        // return Ok(users);
-        return Ok(_dbContext.Users);
-    }
-    
-    [HttpDelete("{id}")]
-    public IActionResult DeleteCategories(Guid id)
-    {
-        // var users = _dbContext.Users.ToList();
-        // return Ok(users);
-        return Ok(_dbContext.Users);
-    }
 }

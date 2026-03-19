@@ -1,22 +1,23 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TetPee.Api.Extensions;
 using TetPee.Repository;
 using TetPee.Service.Seller;
 
 namespace TetPee.Api.Controllers;
 
+[Authorize(Policy = JwtExtensions.AdminPolicy)]
 [ApiController]
 [Route("[controller]")] // địa chỉ mà controller này lắng nghe - tạo đường dẫn URL
 public class SellerController : ControllerBase
 {
-    private readonly AppDbContext _dbContext;
     private readonly IServiceSeller _serviceSeller;
-
-    public SellerController(AppDbContext dbContext, IServiceSeller serviceSeller)
+    public SellerController(IServiceSeller serviceSeller)
     {
-        _dbContext = dbContext;
         _serviceSeller = serviceSeller;
     }
     
+    // [Authorize(Policy = JwtExtensions.AdminPolicy)]
     [HttpGet("")]
     public async Task<IActionResult> GetSellers([FromQuery] string? searchTerm, int pageSize = 10, int pageIndex = 1)//bỏ vào đây ta được là sau dấu chấm hỏi
     {

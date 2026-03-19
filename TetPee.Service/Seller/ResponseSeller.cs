@@ -1,3 +1,5 @@
+using TetPee.Service.User;
+
 namespace TetPee.Service.Seller;
 
 public class ResponseSeller

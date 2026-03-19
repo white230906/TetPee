@@ -36,43 +36,4 @@ public class UserController: ControllerBase
         return Ok(users);
     }
     
-    [HttpPost("")]
-    public IActionResult CreateUsers([FromBody] Request.CreateUserRequest request)// dòng này có nghĩa là sao
-    //post này tui yêu cầu bạn truyền những cái sau cho tôi
-    //tại mày sài cái API này phải tryền cho t cái object có những field như thế này
-
-    {
-        var user = new User()
-        {
-            Email = request.Email,
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            HashedPassword = request.Password
-        };
-        
-        _dbContext.Users.Add(user);// add thằng user vừa mới tạo vào bẳng User nha
-        _dbContext.SaveChanges(); // hoàn tất nếu có dòng này, lưu thay đổi
-         
-        Console.WriteLine(request);
-        return Ok("Get all users");
-    }
-    
-    [HttpPut("{id}")]
-    public IActionResult UpdateUsers(Guid id, [FromBody] Request.UpdateUserRequest request)
-    {
-        // var users = _dbContext.Users.ToList();
-        // return Ok(users);
-        return Ok(_dbContext.Users);
-    }
-    
-    [HttpDelete("{id}")]
-    public IActionResult DeleteUsers(Guid id)
-    {
-        // var users = _dbContext.Users.ToList();
-        // return Ok(users);
-        return Ok(_dbContext.Users);
-    }
-    
-    
-    
 }
