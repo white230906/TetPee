@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Repository;
 using TetPee.Repository.Entity;
@@ -10,15 +11,13 @@ namespace TetPee.Api.Controllers;
 [Route("[controller]")]
 public class CategoryController: ControllerBase
 {
-    private readonly AppDbContext _dbContext;
     private readonly IServiceCategory  _categoryService;
     
-    public CategoryController(AppDbContext dbContext, IServiceCategory categoryService)
+    public CategoryController(IServiceCategory categoryService)
     {
-        _dbContext = dbContext;
         _categoryService = categoryService;
     }
-
+    [Authorize]
     [HttpGet("")]
     public async Task<IActionResult> GetCategories(string? searchTerm)
     {
