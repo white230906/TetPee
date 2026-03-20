@@ -5,7 +5,7 @@ using TetPee.Service.Identity;
 namespace TetPee.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")] // địa chỉ mà controller này lắng nghe - tạo đường dẫn URL
+[Route("[controller]")]
 
 public class IdentityController: ControllerBase
 {
