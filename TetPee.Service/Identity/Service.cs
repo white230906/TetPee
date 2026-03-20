@@ -7,15 +7,16 @@ using TetPee.Service.JwtService;
 namespace TetPee.Service.Identity;
 
 public class Service: IService
-{//able to wrong
+{
     private readonly JwtService.IService _service;
     private readonly AppDbContext _dbContext;
     private readonly JwtOptions _jwtOption = new ();
     public Service(JwtService.IService service, AppDbContext dbContext, IConfiguration configuration)
-    {
-        _service = service;
-        _dbContext = dbContext;
+    {//inject 3 thứ
+        _service = service;//tạo token
+        _dbContext = dbContext;//truy vấn db verify email/ password
         configuration.GetSection(nameof(JwtOptions)).Bind(_jwtOption);
+        //bind từ file config qua cho thằng object này
     }
     public async Task<Response.IdentityResponse> Login(string email, string password)
     {
@@ -25,30 +26,38 @@ public class Service: IService
         {
             throw new Exception("User not found");
         }
-        //bla bla
+      
         if (user.HashedPassword != password)
         {
             throw new Exception("Invalid password");
         }
         
-        //User nay chac chan la toi
-        var claims = new List<Claim>
+        //tạo claim
+        var claims = new List<Claim> 
+            // tạo claims: dữ liệu sẽ nằm trong payload
+            //thông tin của nó được nhát vào token
         {
             new Claim("UserId", user.Id.ToString()),
             new Claim("Email", user.Email),
             new Claim("Role", user.Role),
             new Claim(ClaimTypes.Role, user.Role),
             //Phải có claim này để phân quyền cho các API endpoint, nếu thiếu claim thì sẽ ko phân quyền dược
+            //Dùng cho: [Authorize(Roles = "User")]
+                //Nếu thì thì Authorize sẽ không hoạt động
+                //đây là role đê hệ thống hiểu mà có thể phân quyền
             new Claim(ClaimTypes.Expired,
                 DateTimeOffset.UtcNow.AddMinutes(_jwtOption.ExpireMinutes).ToString()),
+            //thêm custome: không cần thiết lắm
         };
+        //tạo ra token với claims : claims
+        //đưa thông tin user cho hệ thống tạo token
         var token = _service.GenerateAccessToken(claims);
 
         var result = new Response.IdentityResponse()
         {
             AccessToken = token,
         };
-        
+        //trả token ra cho người dùng
         return result;
     }
 }

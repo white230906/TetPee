@@ -13,31 +13,56 @@ public class Service: IService
     public Service(IConfiguration configuration)
     {
         configuration.GetSection(nameof(JwtOptions)).Bind(_jwtOption);
-        //Anh xa duw tu tu AppSettings vao object JwtOptions
+        //GetSection(nameof(JwtOptions))
+            //lấy đúng cái block JwtOptions trong file config
+        //Bind(_jwtOption)
+            //gán dữ liệu vào _jwtOption(JwtOption)
     }
     public string GenerateAccessToken(IEnumerable<Claim> claims)
     {
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOption.SecretKey));
        //tạo 1 Key để mã hóa token, sử dụng secretKey từ JwtOptions
-        var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+       //---------------------------------------------
+       //- 1: tạo key để ký token(xác nhận token có phải do mình tạo không)(sign và verify)
+            //khi tạo token, thì server dùng secretkey để ký
+            //khi client gửi token lên thì server dùng chính secretkey đó để kiểm tra
+        //- 2: Encoding.UTF8.GetBytes(_jwtOption.SecretKey)
+                //chuyển string -> byte để hash được
+            //new SymmetricSecurityKey(byte[])
+                //dùng 1 key cho cả sign và verify
+        var signingCredentials = new SigningCredentials(
+            secretKey, 
+            SecurityAlgorithms.HmacSha256);
         //Tạo 1 đối tượng SigningCredentials để xác định thuật toán mã hóa và key sử dụng để ký token
+        //-------------------------------------
+        // dùng secretKey để ký -> signature
+        // dùng thuật toánHmacSha256
         
-        var tokenOptions = new JwtSecurityToken(
+        var tokenOptions = new JwtSecurityToken( //tạo token
             issuer: _jwtOption.Issuer, //Cái token này được kí - tạo bởi ai, tổ chức nào 
             audience: _jwtOption.Audience, // Cái token này dành cho ai, tổ chức nào
             claims: claims, // Những thông tin mà bạn muốn lưu trữ trong token,
                         // thường là thông tin về người dùng như Id, email, role, ..
                         // nằm trong payload
             expires: DateTime.Now.AddMinutes(_jwtOption.ExpireMinutes),//Token sẽ hết hạn sau bao lâu
-            signingCredentials: signingCredentials
+            signingCredentials: signingCredentials//dùng để ký
         );
         
         var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         //Sau đó JwtSercurityTokenHandler
             // để tạo ra token dưới dạng chuỗi(string) từ các thông tin đã cung cấp ở trên
+            //đóng gói token đó thành chuỗi gửi cho client
+            //token lúc này có đủ 3 phần: Header + Payload + Signature
+            //Header: tự động tạo gồm: thuật toán, loại token
+            //payload: tokenOptions = new JwtSecurityToken: có chứa thông tin người dùng
+            //signature: tạo từ headler + payload + secretKey + thuật toán
         return tokenString;
     }
-
+//FLOW
+// - Lấy secretKey từ appsetting, và chuyển nó thành dạng byte
+// - dùng secretKey đó để sign token(tạo), verify/validate(gửi), theo thuật toán hash265
+// - tạo ra được token
+// - chuyển token thành string, gửi cho client
     public ClaimsPrincipal ValidateToken(string token)
     {
         try

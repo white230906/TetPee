@@ -26,8 +26,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
-
+//đăng kí hệ thống JWT vào .NET
+    //đọc JwtOptions từ appsettings
 builder.Services.AddJwtServices(builder.Configuration);
+//setup Swagger để hỗ trợ JWT
+    //login có token, nhưng test API trên Swagger thì ko được gửi đi
+    //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
 
 builder.Services.AddScoped<JwtService.IService, JwtService.Service>();
@@ -47,9 +51,22 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerAPI();
+    //chỉ mở công cụ test khi đang code, không mở khi deploy
 }
 
 app.UseAuthentication();
+/*
+ Khi client gọi API:
+Request gửi lên (có token)
+UseAuthentication() sẽ:
+    lấy token từ header
+    kiểm tra token
+    giải mã token
+    Nếu hợp lệ:
+    gắn user vào HttpContext
+Sau đó:
+[Authorize] mới hoạt động được
+ */
 app.UseAuthorization();
 
 app.MapControllers();
