@@ -36,5 +36,39 @@ public class UserController: ControllerBase
         return Ok(users);
     }
     
+    [HttpPut("{id}")]
+    public IActionResult UpdateUserById(Guid id, [FromBody] Request.UpdateUserRequest request)
+    {
+        // var users = _dbContext.Users.ToList();
+        // return Ok(users);
+        return Ok("Get all users");
+    }
     
+    [HttpDelete("{id}")]
+    public IActionResult DeleteUserById(Guid id)
+    {
+        // var users = _dbContext.Users.ToList();
+        // return Ok(users);
+        return Ok("Get all users");
+    }
+    
+    [HttpPost("")]
+    public IActionResult CreateUsers([FromBody] Request.CreateUserRequest request)
+    {
+        var user = new User()
+        {
+            Email = request.Email,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            HashedPassword = request.Password // Chưa hash, chỉ demo
+        };
+        
+        Console.WriteLine(user.VerifyCode);
+        
+        _dbContext.Users.Add(user);
+        
+        _dbContext.SaveChanges();
+        
+        return Ok("Create user successfully");
+    }
 }
