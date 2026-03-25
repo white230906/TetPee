@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Api.Extensions;
 using TetPee.Repository;
+using TetPee.Repository.Entity;
 using TetPee.Service.Seller;
 
 namespace TetPee.Api.Controllers;
@@ -36,5 +37,12 @@ public class SellerController : ControllerBase
  
         // throw new Exception("Get Users Error");
         return Ok(sellers);
+    }
+
+    [HttpPost("")]
+    public async Task<IActionResult> CreateSeller(RequestSeller.CreateSellerRequest request)
+    {
+        var seller = await _serviceSeller.CreateSeller(request);
+        return Ok(seller);
     }
 }

@@ -6,6 +6,8 @@ using TetPee.Service.Category;
 using TetPee.Service.Seller;
 using TetPee.Service.User;
 
+
+using ProductService = TetPee.Service.Product;
 using IService = TetPee.Service.User.IService;
 using IdentityService = TetPee.Service.Identity;
 using  JwtService = TetPee.Service.JwtService;
@@ -40,6 +42,7 @@ builder.Services.AddScoped<IServiceSeller, ServiceSeller>();
 //thằng nào cần IServiceCategory thì inject cho tôi ServiceCategory
 builder.Services.AddScoped<IServiceCategory, ServiceCategory>();
 builder.Services.AddScoped<IService, Service>();
+builder.Services.AddScoped<ProductService.IService, ProductService.Service>();
 
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();//học
 
