@@ -6,7 +6,8 @@ using TetPee.Service.Category;
 using TetPee.Service.Seller;
 using TetPee.Service.User;
 
-
+using MediaService = TetPee.Service.MediaService;
+using CloudinaryService = TetPee.Service.CloudinaryService;
 using ProductService = TetPee.Service.Product;
 using IService = TetPee.Service.User.IService;
 using IdentityService = TetPee.Service.Identity;
@@ -36,6 +37,7 @@ builder.Services.AddJwtServices(builder.Configuration);
     //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
 
+builder.Services.AddScoped<MediaService.IService, CloudinaryService.Service>();
 builder.Services.AddScoped<JwtService.IService, JwtService.Service>();
 builder.Services.AddScoped<IdentityService.IService, IdentityService.Service>();
 builder.Services.AddScoped<IServiceSeller, ServiceSeller>();
@@ -43,6 +45,7 @@ builder.Services.AddScoped<IServiceSeller, ServiceSeller>();
 builder.Services.AddScoped<IServiceCategory, ServiceCategory>();
 builder.Services.AddScoped<IService, Service>();
 builder.Services.AddScoped<ProductService.IService, ProductService.Service>();
+
 
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();//học
 

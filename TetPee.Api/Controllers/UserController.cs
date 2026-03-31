@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TetPee.Repository;
 using TetPee.Repository.Entity;
 using TetPee.Service.User;
+using IApplicationLifetime = Microsoft.Extensions.Hosting.IApplicationLifetime;
 
 namespace TetPee.Api.Controllers;
 
@@ -10,13 +11,14 @@ namespace TetPee.Api.Controllers;
 public class UserController: ControllerBase
 {
     private readonly AppDbContext _dbContext;
-
+    private readonly Service.MediaService.IService _meidaService;
     private readonly IService _userService;
 
-    public UserController(AppDbContext dbContext, IService  userService)
+    public UserController(AppDbContext dbContext, IService  userService,  Service.MediaService.IService meidaService)
     {
         _dbContext = dbContext;
         _userService = userService;
+        _meidaService = meidaService;
     }
 
     [HttpGet("")] 
@@ -53,7 +55,7 @@ public class UserController: ControllerBase
     }
     
     [HttpPost("")]
-    public IActionResult CreateUsers([FromBody] Request.CreateUserRequest request)
+    public async Task<IActionResult> CreateUsers([FromForm] Request.CreateUserRequest request)
     {
         var user = new User()
         {
@@ -62,12 +64,16 @@ public class UserController: ControllerBase
             LastName = request.LastName,
             HashedPassword = request.Password // Chưa hash, chỉ demo
         };
+
+        if (request.Avatar != null)
+        {
+            var media = await _meidaService.UploadImageAsync(request.Avatar);
+            user.ImageUrl = media;
+        }
         
-        Console.WriteLine(user.VerifyCode);
+        _dbContext.Add(user);
         
-        _dbContext.Users.Add(user);
-        
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
         
         return Ok("Create user successfully");
     }

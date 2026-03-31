@@ -46,17 +46,17 @@ public class Service: IService
                 CategoryId = x,
                 ProductID = product.Id
             });
-            var productCateList1 = new List<ProductCategory>();
-            foreach (var id in request.CategoryIds)
-            {
-                var productCategory = new ProductCategory()
-                {
-                    CategoryId = id,
-                    ProductID = product.Id
-                };
-                productCateList1.Add(productCategory);
-                await _dbContext.SaveChangesAsync();
-            }    
+            // var productCateList1 = new List<ProductCategory>();
+            // foreach (var id in request.CategoryIds)
+            // {
+            //     var productCategory = new ProductCategory()
+            //     {
+            //         CategoryId = id,
+            //         ProductID = product.Id
+            //     };
+            //     productCateList1.Add(productCategory);
+            //     await _dbContext.SaveChangesAsync();
+            // }    
         _dbContext.AddRange(productCateList);
         await _dbContext.SaveChangesAsync();
         }
