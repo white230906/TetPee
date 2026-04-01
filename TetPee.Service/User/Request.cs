@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http;
+
 namespace TetPee.Service.User;
 
 public class Request// gọi là DTO(Data Transfer Object): là gì ?
@@ -8,11 +10,12 @@ public class Request// gọi là DTO(Data Transfer Object): là gì ?
     Controller nhận JSON
     Map JSON → Request DTO
     Service dùng DTO để xử lý
-     */
+     */ 
 {
     public class CreateUserRequest //DTO
     {
         public required string Email {get; set;}
+        public IFormFile? Avatar {get; set;}
         public required string FirstName {get; set;}
         public required string LastName {get; set;}
         public required string Password {get; set;}

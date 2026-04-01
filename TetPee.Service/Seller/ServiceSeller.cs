@@ -1,16 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using TetPee.Repository;
+using TetPee.Service.MailService;
 using TetPee.Service.User;
+using IService = TetPee.Service.MailService.IService;
 
 namespace TetPee.Service.Seller;
 
 public class ServiceSeller: IServiceSeller 
 {
     private readonly AppDbContext _dbContext;
+    private readonly IService _mailService;
     
-    public ServiceSeller(AppDbContext dbContext)
+    public ServiceSeller(AppDbContext dbContext, IService mailService)
     {
         _dbContext = dbContext;
+        _mailService = mailService;
     }
     
     public async Task<Base.Response.PageResult<ResponseSeller.GetSellerResponse>> GetSellers(string? searchTerm, int pageSize, int pageIndex)
@@ -104,7 +108,17 @@ public class ServiceSeller: IServiceSeller
             };
             _dbContext.Add(seller);
             var sellerResult = await _dbContext.SaveChangesAsync();
+
+            await _mailService.SendMail(new MailContent()
+            {
+                To = request.Email,
+                Subject = "Welcome to TetPee",
+                Body = $"Dear {request.FirstName} {request.LastName}, \n\n" +
+                "Thank you for registering as a seller on TetPee. We are excited hihi",
+            });
+            
             if(sellerResult > 0) return "Add Seller successfully";
+            
             return Message.FailToAddSeller;
         }
 
