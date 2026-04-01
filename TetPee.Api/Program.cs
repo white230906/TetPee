@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using TetPee.Api.Extensions;
-using TetPee.Api.Middleware;
+using TetPee.Api.Middlewares;
+using TetPee.Api.Middlewares;
 using TetPee.Repository;
 using TetPee.Service.Category;
 using TetPee.Service.Seller;
 using TetPee.Service.User;
 
+using MailService = TetPee.Service.MailService;
 using MediaService = TetPee.Service.MediaService;
 using CloudinaryService = TetPee.Service.CloudinaryService;
 using ProductService = TetPee.Service.Product;
@@ -19,6 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();// nằm đầu tiên để kiểm soát tất cả cái đi vào
+builder.Services.AddHttpContextAccessor();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -37,6 +40,8 @@ builder.Services.AddJwtServices(builder.Configuration);
     //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
 
+
+builder.Services.AddScoped<MailService.IService, MailService.Service>();
 builder.Services.AddScoped<MediaService.IService, CloudinaryService.Service>();
 builder.Services.AddScoped<JwtService.IService, JwtService.Service>();
 builder.Services.AddScoped<IdentityService.IService, IdentityService.Service>();

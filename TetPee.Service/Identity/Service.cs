@@ -21,6 +21,7 @@ public class Service: IService
     public async Task<Response.IdentityResponse> Login(string email, string password)
     {
         var user = await _dbContext.Users
+            .Include(u => u.Seller)
             .FirstOrDefaultAsync(u => u.Email == email);
         if (user == null)
         {
@@ -49,6 +50,15 @@ public class Service: IService
                 DateTimeOffset.UtcNow.AddMinutes(_jwtOption.ExpireMinutes).ToString()),
             //thêm custome: không cần thiết lắm
         };
+
+        if (user.Role == "Seller")
+        {
+            var seller = await _dbContext.Sellers.FirstOrDefaultAsync(u => u.UserId == user.Id);
+            if (seller != null)
+            {
+                claims.Add(new Claim("SellerId", seller.Id.ToString()));
+            }
+        }
         //tạo ra token với claims : claims
         //đưa thông tin user cho hệ thống tạo token
         var token = _service.GenerateAccessToken(claims);

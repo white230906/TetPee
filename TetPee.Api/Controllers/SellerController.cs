@@ -7,7 +7,7 @@ using TetPee.Service.Seller;
 
 namespace TetPee.Api.Controllers;
 
-[Authorize(Policy = JwtExtensions.AdminPolicy)]
+// [Authorize(Policy = JwtExtensions.AdminPolicy)]
 [ApiController]
 [Route("[controller]")] // địa chỉ mà controller này lắng nghe - tạo đường dẫn URL
 public class SellerController : ControllerBase
