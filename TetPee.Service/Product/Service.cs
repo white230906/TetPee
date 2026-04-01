@@ -31,7 +31,7 @@ public class Service: IService
             throw new Exception("Product with the same name already exits");
         }
         var existingSellerQuery = _dbContext.Sellers.Where(x => x.Id == sellerIdGuid);
-        bool isExistSeller = await existingProductQuery.AnyAsync();
+        bool isExistSeller = await existingSellerQuery.AnyAsync();
         if (!isExistSeller)
         {
             throw new Exception("Seller not exist");

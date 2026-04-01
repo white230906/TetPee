@@ -21,6 +21,7 @@ public class Service: IService
     public async Task<Response.IdentityResponse> Login(string email, string password)
     {
         var user = await _dbContext.Users
+            .Include(u => u.Seller)
             .FirstOrDefaultAsync(u => u.Email == email);
         if (user == null)
         {
