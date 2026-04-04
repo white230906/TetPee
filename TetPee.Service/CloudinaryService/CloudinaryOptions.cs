@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TetPee.Repository.CloudinaryService;
+namespace TetPee.Service.CloudinaryService;
 
 public class CloudinaryOptions
 {

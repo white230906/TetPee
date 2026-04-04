@@ -18,6 +18,7 @@ public class Product: BaseEntity<Guid>, IAuditableEntity
     public ICollection<OrderDetail>  OrderDetails { get; set; } = new List<OrderDetail>();
     public ICollection<ProductCategory>  ProductCategories { get; set; } = new List<ProductCategory>();
     public ICollection<ProductStorage>  ProductStorages { get; set; } = new List<ProductStorage>();
+    public ICollection<CartDetail>  CartDetails { get; set; } = new List<CartDetail>();
     //ICollection: là một interface, mà interface thì ko khởi tạo trực tiếp đc,
     //nên muốn dùng thì phải new 1 class cụ thể
     //Còn List là class, nên có thể new
