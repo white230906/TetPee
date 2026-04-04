@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Api.Extensions;
 using TetPee.Service.Product;
+using IService = TetPee.Service.Product.IService;
 
 namespace TetPee.Api.Controllers;
 [ApiController]
