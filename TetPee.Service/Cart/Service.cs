@@ -98,8 +98,23 @@ public class Service: IService
         await _dbContext.SaveChangesAsync();
     }
 
-    public Task<Response.ProductResponse> GetCart()
+    public async Task<List<Response.ProductResponse>> GetCart()
     {
-        throw new NotImplementedException();
+        var userId = _httpContext.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "UserId")?.Value;
+        var userIdGuid = Guid.Parse(userId!);
+
+        var query = _dbContext.CartDetails
+            .Where(x => x.Cart.UserId == userIdGuid)
+            .Select(x => new Response.ProductResponse
+            {
+                Name = x.Product.Name,
+                Description = x.Product.Description,
+                Price = x.Product.Price,
+                Url = x.Product.UrlImage,
+                Quantity = x.Quantity
+            });
+
+        var result = await query.ToListAsync();
+        return result;
     }
 }

@@ -8,5 +8,5 @@ public interface IService
     
     public Task RemoveProductFromCart(Request.RemoveProductFromCartRequest request);
     
-    public Task<Response.ProductResponse> GetCart();
+    public Task<List<Response.ProductResponse>> GetCart();
 }

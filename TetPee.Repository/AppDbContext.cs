@@ -675,5 +675,18 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
 
             builder.HasData(productStorages);
         });
+
+        modelBuilder.Entity<CartDetail>(builder =>
+        {
+            builder.HasOne(c => c.Cart)
+                .WithMany(c => c.CartDetails)
+                .HasForeignKey(c => c.CartId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.HasOne(c => c.Product)
+                .WithMany(c => c.CartDetails)
+                .HasForeignKey(c => c.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
     }
 }
