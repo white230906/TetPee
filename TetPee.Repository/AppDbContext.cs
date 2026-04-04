@@ -78,7 +78,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
     public DbSet<OrderDetail> OrderDetails  { get; set; }
     public DbSet<ProductCategory> ProductCategories  { get; set; }
     public DbSet<Category> Categories  { get; set; }
-
+    public DbSet<CartDetail> CartDetails  { get; set; }
     
     //Nếu Entity là bản thiết kế cho db
     //thì OnModelCreating là "luật xây dựng cho db": là nơi cấu hình mô hình dữ liệu (Data Model)
@@ -536,9 +536,9 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         
         modelBuilder.Entity<Cart>(builder =>
         {
-            builder.Property(c => c.TotalAmount)
-                .IsRequired()
-                .HasColumnType("decimal(18,2)");
+            // builder.Property(c => c.TotalAmount)
+            //     .IsRequired()
+            //     .HasColumnType("decimal(18,2)");
             
             builder.HasOne(c => c.User)
                 .WithOne(u => u.Cart)

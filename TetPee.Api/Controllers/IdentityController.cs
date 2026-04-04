@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Service.Identity;
+using IService = TetPee.Service.Identity.IService;
 
 namespace TetPee.Api.Controllers;
 

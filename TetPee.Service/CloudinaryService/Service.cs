@@ -3,7 +3,6 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using TetPee.Repository.CloudinaryService;
 using TetPee.Service.MediaService;
 
 namespace TetPee.Service.CloudinaryService;

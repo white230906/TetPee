@@ -1,6 +1,6 @@
 using TetPee.Service.Models;
 
-namespace TetPee.Api.Middlewares;
+namespace TetPee.Api.Middleware;
 
 public class GlobalExceptionHandlerMiddleware : IMiddleware
 {

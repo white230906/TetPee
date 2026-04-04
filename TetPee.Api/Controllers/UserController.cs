@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TetPee.Repository;
 using TetPee.Repository.Entity;
 using TetPee.Service.User;
-using IApplicationLifetime = Microsoft.Extensions.Hosting.IApplicationLifetime;
+using IService = TetPee.Service.User.IService;
 
 namespace TetPee.Api.Controllers;
 

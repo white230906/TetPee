@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TetPee.Api.Extensions;
-using TetPee.Api.Middlewares;
-using TetPee.Api.Middlewares;
+using TetPee.Api.Middleware;
 using TetPee.Repository;
 using TetPee.Service.Category;
 using TetPee.Service.Seller;
@@ -14,6 +13,8 @@ using ProductService = TetPee.Service.Product;
 using IService = TetPee.Service.User.IService;
 using IdentityService = TetPee.Service.Identity;
 using  JwtService = TetPee.Service.JwtService;
+using  CartService = TetPee.Service.Cart;
+
 
 //khai báo những cái đồ chơi mà mình sài
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +41,7 @@ builder.Services.AddJwtServices(builder.Configuration);
     //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
 
-
+builder.Services.AddScoped<CartService.IService, CartService.Service>();
 builder.Services.AddScoped<MailService.IService, MailService.Service>();
 builder.Services.AddScoped<MediaService.IService, CloudinaryService.Service>();
 builder.Services.AddScoped<JwtService.IService, JwtService.Service>();
