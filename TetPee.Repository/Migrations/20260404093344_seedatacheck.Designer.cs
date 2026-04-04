@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TetPee.Repository;
@@ -11,9 +12,11 @@ using TetPee.Repository;
 namespace TetPee.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260404093344_seedatacheck")]
+    partial class seedatacheck
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,91 +56,91 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ef012b50-8922-4129-8960-8e3f166108c3"),
+                            Id = new Guid("837ce73a-7abf-4b09-b96c-1689cc81a65f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("4e88318e-2947-4475-90f5-e96f957d7b1a")
+                            UserId = new Guid("f5d12cce-b112-4af2-a139-c20d6383b6d5")
                         },
                         new
                         {
-                            Id = new Guid("a0b8f5e2-8bcd-42ff-8057-4c4b6b037a8f"),
+                            Id = new Guid("ee9e4124-a592-402a-801c-30afee9e6d12"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("b32389a7-c793-4c70-b0ce-67017447f991")
+                            UserId = new Guid("c61ac8a1-9234-410c-889d-4861579cf4c6")
                         },
                         new
                         {
-                            Id = new Guid("d1321bd3-5995-46e7-a520-0215fa5addbc"),
+                            Id = new Guid("34d9819e-62d1-484d-bab9-2feac2df8f40"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("ed8f52ce-2934-46e3-8f01-dfa6b0da0344")
+                            UserId = new Guid("1dfe8cbb-e476-4a4d-b877-c07f149be580")
                         },
                         new
                         {
-                            Id = new Guid("2cb03e4a-b415-491f-9342-db0c4d127a3a"),
+                            Id = new Guid("82af644e-2046-4d9e-ae26-c1185a42d522"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("0a2e86e2-495f-49a5-9d50-1d8adb6248d5")
+                            UserId = new Guid("8cd0e1ba-01be-4fa3-84b7-cbd9fb5dbdc5")
                         },
                         new
                         {
-                            Id = new Guid("051269b9-f343-460b-8794-a570f6aa1f38"),
+                            Id = new Guid("a6bdf16c-784f-4272-b871-16fa3a5267a4"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("6a31de00-b990-4d94-9f59-fb38b96e5c8f")
+                            UserId = new Guid("1ddce2c8-0032-4982-8383-a9b5c29472b7")
                         },
                         new
                         {
-                            Id = new Guid("a0e6d68d-e22b-4523-a7e9-dcdf56e8cf9d"),
+                            Id = new Guid("ecb12bcb-17c5-4794-a9ed-919bf74b6057"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("d9629043-b6be-4637-9847-c149a2f63ce9")
+                            UserId = new Guid("d23b0da1-4cd7-48b5-aa80-ae4cd1b7609c")
                         },
                         new
                         {
-                            Id = new Guid("0ce31fda-bc07-42f9-b3e8-80cf904172a9"),
+                            Id = new Guid("5ab90acd-008e-4828-b41c-0e663a3b4d0d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("f4c07995-701e-4e7e-be73-6e1be55ecd7d")
+                            UserId = new Guid("51a8768d-590d-4831-978c-6b7960d7f39b")
                         },
                         new
                         {
-                            Id = new Guid("2bee142c-9765-46ce-b664-c0f992eb8f4a"),
+                            Id = new Guid("e63a72ad-e90a-4389-b824-6593f0398e18"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("1e189e92-a0ab-416d-a708-9560d283bd2b")
+                            UserId = new Guid("b4c573be-8016-452a-8c21-afedc1f825a8")
                         },
                         new
                         {
-                            Id = new Guid("25bd650a-b715-4031-ac76-0799501ef44d"),
+                            Id = new Guid("3738387d-ef95-4512-8f59-8ae98c7fa352"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("17fbafc5-630f-4941-a0ce-293148e13e86")
+                            UserId = new Guid("f6ed49d3-2a5a-44cc-a34b-c4aadc646e82")
                         },
                         new
                         {
-                            Id = new Guid("89d26d02-ae0e-4f95-bd76-3f5e0f6897d6"),
+                            Id = new Guid("9adb245e-a086-49b4-ac41-45f47133f441"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("ac332d83-c238-4d7c-a3b6-517d2c881474")
+                            UserId = new Guid("5845db73-d330-4a73-8f17-54c68091115d")
                         },
                         new
                         {
-                            Id = new Guid("a53677d5-e8f5-4630-8873-bf23714ed459"),
+                            Id = new Guid("b87809cf-cc20-4f9a-ae2f-eadede0348a5"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TotalAmount = 10000m,
-                            UserId = new Guid("8891c817-d862-446d-9ba9-af4b3227ab83")
+                            UserId = new Guid("b7470810-5d68-468c-be82-319a1a66b5a3")
                         });
                 });
 
@@ -173,129 +176,129 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo"
                         },
                         new
                         {
-                            Id = new Guid("f5834f1c-904e-4a32-87a0-3d6368baa0d3"),
+                            Id = new Guid("50740698-0960-4fe4-8e77-a6c1942c007d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần"
                         },
                         new
                         {
-                            Id = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c"),
+                            Id = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao",
-                            ParentId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2")
+                            ParentId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709")
                         },
                         new
                         {
-                            Id = new Guid("06c0a33e-1637-48ae-af24-adef750ca7e2"),
+                            Id = new Guid("ab674672-33d2-48e0-a386-a03a0392993e"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo ba lỗ",
-                            ParentId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2")
+                            ParentId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709")
                         },
                         new
                         {
-                            Id = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55"),
+                            Id = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean",
-                            ParentId = new Guid("f5834f1c-904e-4a32-87a0-3d6368baa0d3")
+                            ParentId = new Guid("50740698-0960-4fe4-8e77-a6c1942c007d")
                         },
                         new
                         {
-                            Id = new Guid("675680bc-1643-439a-bde9-f3cfae1dfeda"),
+                            Id = new Guid("b46861ff-57d5-4a43-a107-06e5aa04837c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Kaki",
-                            ParentId = new Guid("f5834f1c-904e-4a32-87a0-3d6368baa0d3")
+                            ParentId = new Guid("50740698-0960-4fe4-8e77-a6c1942c007d")
                         },
                         new
                         {
-                            Id = new Guid("1d31a103-425e-4243-9660-164b2f84e5b9"),
+                            Id = new Guid("9be91b88-62e2-476e-b20f-63e4be81ef1b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean1",
-                            ParentId = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55")
+                            ParentId = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35")
                         },
                         new
                         {
-                            Id = new Guid("9d372067-add0-434a-96f6-9f026c5f3496"),
+                            Id = new Guid("a759c27a-6512-46db-8e6a-5959d122e514"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao2",
-                            ParentId = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c")
+                            ParentId = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b")
                         },
                         new
                         {
-                            Id = new Guid("87135a23-9902-44c7-a36a-3db2a7d96677"),
+                            Id = new Guid("1ea3eab2-73cb-4dcb-907d-c389767b5ddf"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean3",
-                            ParentId = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55")
+                            ParentId = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35")
                         },
                         new
                         {
-                            Id = new Guid("2b0217cf-7883-418b-8ea3-ad1383124a8a"),
+                            Id = new Guid("e9801ece-7017-45b7-b2f3-8104f8809b95"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao4",
-                            ParentId = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c")
+                            ParentId = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b")
                         },
                         new
                         {
-                            Id = new Guid("8e381796-c4fb-4458-9d6f-109be87dc3dc"),
+                            Id = new Guid("87b83f1e-7a12-45b3-b7fd-39debb2d21cd"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean5",
-                            ParentId = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55")
+                            ParentId = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35")
                         },
                         new
                         {
-                            Id = new Guid("d229ddf8-3dc1-4996-9165-4673d1c15ca3"),
+                            Id = new Guid("c5a122c0-8913-4fcb-8940-c375dcb9eb94"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao6",
-                            ParentId = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c")
+                            ParentId = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b")
                         },
                         new
                         {
-                            Id = new Guid("5d673817-5ca4-4554-8ee2-9b15360ec9cc"),
+                            Id = new Guid("9069183f-a9b0-47b3-a6e6-b9dc00a5a421"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean7",
-                            ParentId = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55")
+                            ParentId = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35")
                         },
                         new
                         {
-                            Id = new Guid("7f987db7-535e-491c-9cc5-4e807ed9ed41"),
+                            Id = new Guid("fcdbde43-4964-4b92-a3e7-d207922e84e5"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao8",
-                            ParentId = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c")
+                            ParentId = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b")
                         },
                         new
                         {
-                            Id = new Guid("ecd76c91-12d4-4033-9a80-8bbe8ddf761f"),
+                            Id = new Guid("d0dae292-3596-496f-8c57-f4d1e0e5f137"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Quần Jean9",
-                            ParentId = new Guid("fbf25fbf-5881-4a56-ae4b-bea5a4183e55")
+                            ParentId = new Guid("92197675-c799-49d2-bb0f-0e65a76b1d35")
                         },
                         new
                         {
-                            Id = new Guid("aee972b3-272d-48e1-9dcb-d36448c4e180"),
+                            Id = new Guid("67faef00-d16b-4c76-b697-9d28be242344"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Name = "Áo thể thao10",
-                            ParentId = new Guid("de3b1085-5cb0-4a92-8357-a5284819bf6c")
+                            ParentId = new Guid("4a63b095-d993-4e6f-a933-a658eb18c89b")
                         });
                 });
 
@@ -333,100 +336,100 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8914192b-cd58-4bfd-b866-0f8fe7972b1d"),
+                            Id = new Guid("13f6f006-055b-43d1-b2df-dda5925dfe84"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("5b28ebcc-e93e-41e1-9bf9-fdc4763dd025"),
+                            ProductId = new Guid("4eaa6ab1-93f0-4635-90a3-58d13c1c1e06"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("d71222df-d3e5-4874-8aa9-3c6997b2336b"),
+                            Id = new Guid("c6f138fb-968c-4e71-9146-453c0e821660"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("d307145e-0a9a-452a-a079-b3d50b7feea1"),
+                            ProductId = new Guid("c5db0d5a-15fc-4e73-b74a-78e378ed3dfa"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("7749703c-5ea6-491a-88af-50016be30a5b"),
+                            Id = new Guid("4d5a9899-3e6c-4718-bd27-cc324dfe2bf1"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("e2036b88-618b-4434-930a-6143bfec0e52"),
+                            ProductId = new Guid("b5962eb6-0674-4296-9e83-ab3de599bb23"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("aef61c33-7d7b-47f0-8710-8dee20d76020"),
+                            Id = new Guid("e1c7454d-4027-4489-a63a-7894ca9f02d8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("0ff57824-8810-485a-9767-147798cdd845"),
+                            ProductId = new Guid("2a0aea6a-8858-4264-b279-5c9ad860b9e5"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("2944a64d-04ea-43fd-9bd2-91c9bb87ea71"),
+                            Id = new Guid("0fd876a1-1fe3-4d7a-87a0-f8c9619aea4e"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("7e8bad4d-3d1c-448e-b2ec-e9b12d45c6e4"),
+                            ProductId = new Guid("2e43b0b5-f2b2-4d74-9e12-7e153e1a95b2"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("7b8d9351-9646-4589-bdd6-a60733a862af"),
+                            Id = new Guid("39e9192f-b0eb-49a0-8423-49c8a849faed"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("59c95733-e5e6-4b3e-bba5-c13456bd8a2b"),
+                            ProductId = new Guid("c8708d31-917a-49cf-94b5-8aedc825ebf9"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("f1ae7b79-df6f-480a-aa44-f9b16310a0a7"),
+                            Id = new Guid("41186a43-d9b4-4a52-b538-d21962074721"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("b5208bd1-6cdb-4a01-87f1-9a6651ecc1a1"),
+                            ProductId = new Guid("7919ac33-4eae-409e-ac9b-b49851cd3164"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("aaa483e2-21a5-48dd-8ab5-905309a914f2"),
+                            Id = new Guid("8bdbfe1b-8b70-4d85-8b2c-46a3342d9bed"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("dcdda066-1bab-4ca3-ab48-d4dd8a77b0ff"),
+                            ProductId = new Guid("8f68bf06-6ef9-4c49-bec5-d3c9106d5e7d"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("fd3abce8-6683-4122-b520-300aa8a0129b"),
+                            Id = new Guid("b1500ac1-866d-414e-ae57-f660c2374c88"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("c7d3fed5-8140-439c-a74f-220d61669d64"),
+                            ProductId = new Guid("d21132bb-4c91-4007-b697-8b97bd2c2866"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("4dd66c23-793b-4433-8d7b-3126d1ae55ac"),
+                            Id = new Guid("667a013f-a872-4bf6-a9c4-b7fde213c147"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("3598c444-c41a-4d74-976a-918cc55d2803"),
+                            ProductId = new Guid("865a578f-10dd-4c4e-9c63-eb58cefd74e2"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         },
                         new
                         {
-                            Id = new Guid("a88bf2a9-c4a6-4345-b4f8-73e1ada3e055"),
+                            Id = new Guid("4651696c-7eda-4890-85da-47f3a6c3aafb"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("146d4211-3b46-4b17-a95a-a12c918c3ce5"),
+                            ProductId = new Guid("86eb3235-91aa-409d-b199-fba95683a349"),
                             TotalInStock = 1000m,
                             TotalSell = 1000m
                         });
@@ -471,133 +474,133 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
+                            Id = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
                             Address = "Bien hoa, Dong Nai",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed",
                             TotalAmount = 10000m,
-                            UserId = new Guid("17ee3cb9-9e49-4a44-887c-789205cba897")
+                            UserId = new Guid("aa9b32af-cb28-4544-997d-efeec184005b")
                         },
                         new
                         {
-                            Id = new Guid("554e280a-40c9-4a48-bb3b-b362c8ab178b"),
+                            Id = new Guid("c1796fbd-1622-4032-9818-c4f49fbd5e2f"),
                             Address = "Bien hoa, Dong Nai",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed",
                             TotalAmount = 10000m,
-                            UserId = new Guid("17ee3cb9-9e49-4a44-887c-789205cba897")
+                            UserId = new Guid("aa9b32af-cb28-4544-997d-efeec184005b")
                         },
                         new
                         {
-                            Id = new Guid("a75b01fa-dfa5-4b0e-b028-3ae55eabe6de"),
+                            Id = new Guid("6dbf8736-a91c-498b-b04c-c619b7049d9f"),
                             Address = "Bien hoa, Dong Nai1",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed1",
                             TotalAmount = 10001m,
-                            UserId = new Guid("4e88318e-2947-4475-90f5-e96f957d7b1a")
+                            UserId = new Guid("f5d12cce-b112-4af2-a139-c20d6383b6d5")
                         },
                         new
                         {
-                            Id = new Guid("1b51ec7a-94cb-4adf-924e-82b8673b8c4c"),
+                            Id = new Guid("363790e7-8972-4d6e-b52e-4f972546587d"),
                             Address = "Bien hoa, Dong Nai2",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed2",
                             TotalAmount = 10002m,
-                            UserId = new Guid("b32389a7-c793-4c70-b0ce-67017447f991")
+                            UserId = new Guid("c61ac8a1-9234-410c-889d-4861579cf4c6")
                         },
                         new
                         {
-                            Id = new Guid("299e674b-25b6-4eb7-a299-4bb47cfc8ece"),
+                            Id = new Guid("866987c8-f122-4a29-a1e9-d78c9ff73f2b"),
                             Address = "Bien hoa, Dong Nai3",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed3",
                             TotalAmount = 10003m,
-                            UserId = new Guid("ed8f52ce-2934-46e3-8f01-dfa6b0da0344")
+                            UserId = new Guid("1dfe8cbb-e476-4a4d-b877-c07f149be580")
                         },
                         new
                         {
-                            Id = new Guid("4a4c9e3d-6c47-4a8e-bdc2-bf27fd9a0c1d"),
+                            Id = new Guid("bb6722c9-b251-4c36-9f8f-8d6f1df89a9d"),
                             Address = "Bien hoa, Dong Nai4",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed4",
                             TotalAmount = 10004m,
-                            UserId = new Guid("0a2e86e2-495f-49a5-9d50-1d8adb6248d5")
+                            UserId = new Guid("8cd0e1ba-01be-4fa3-84b7-cbd9fb5dbdc5")
                         },
                         new
                         {
-                            Id = new Guid("0eadec31-9472-4eb8-bc2d-c567202a6e6a"),
+                            Id = new Guid("3c2ace5f-dd8e-4499-833a-19d6c41fef63"),
                             Address = "Bien hoa, Dong Nai5",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed5",
                             TotalAmount = 10005m,
-                            UserId = new Guid("6a31de00-b990-4d94-9f59-fb38b96e5c8f")
+                            UserId = new Guid("1ddce2c8-0032-4982-8383-a9b5c29472b7")
                         },
                         new
                         {
-                            Id = new Guid("cdef6ff8-e56e-4bfc-baf0-192af5639636"),
+                            Id = new Guid("f6b242c6-f3f7-421f-94f1-87a57d602d43"),
                             Address = "Bien hoa, Dong Nai6",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed6",
                             TotalAmount = 10006m,
-                            UserId = new Guid("d9629043-b6be-4637-9847-c149a2f63ce9")
+                            UserId = new Guid("d23b0da1-4cd7-48b5-aa80-ae4cd1b7609c")
                         },
                         new
                         {
-                            Id = new Guid("dd8fdecf-6a55-41b1-bec8-c9fa4283b658"),
+                            Id = new Guid("a6151212-5fe3-4d85-b1bb-eda8af4e5f36"),
                             Address = "Bien hoa, Dong Nai7",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed7",
                             TotalAmount = 10007m,
-                            UserId = new Guid("f4c07995-701e-4e7e-be73-6e1be55ecd7d")
+                            UserId = new Guid("51a8768d-590d-4831-978c-6b7960d7f39b")
                         },
                         new
                         {
-                            Id = new Guid("ee7b64d2-bf18-4552-ae25-9055deef5aa6"),
+                            Id = new Guid("8602d049-8d65-4127-a509-6165b4fe68a2"),
                             Address = "Bien hoa, Dong Nai8",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed8",
                             TotalAmount = 10008m,
-                            UserId = new Guid("1e189e92-a0ab-416d-a708-9560d283bd2b")
+                            UserId = new Guid("b4c573be-8016-452a-8c21-afedc1f825a8")
                         },
                         new
                         {
-                            Id = new Guid("e2074dcd-9605-44eb-8161-880920473739"),
+                            Id = new Guid("fc3256bc-a4b9-4d2f-930d-ad7c8943999a"),
                             Address = "Bien hoa, Dong Nai9",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed9",
                             TotalAmount = 10009m,
-                            UserId = new Guid("17fbafc5-630f-4941-a0ce-293148e13e86")
+                            UserId = new Guid("f6ed49d3-2a5a-44cc-a34b-c4aadc646e82")
                         },
                         new
                         {
-                            Id = new Guid("c423f534-14f9-47a5-88dc-8b94374d8292"),
+                            Id = new Guid("d15ceca7-1d08-4630-a5fa-f1d2f1e85433"),
                             Address = "Bien hoa, Dong Nai10",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed10",
                             TotalAmount = 10010m,
-                            UserId = new Guid("ac332d83-c238-4d7c-a3b6-517d2c881474")
+                            UserId = new Guid("5845db73-d330-4a73-8f17-54c68091115d")
                         },
                         new
                         {
-                            Id = new Guid("e7b3ddcf-b46e-4e6d-b9a7-cfb59bd054da"),
+                            Id = new Guid("f4dcc68f-1601-4285-a89a-13ce3c4b4039"),
                             Address = "Bien hoa, Dong Nai11",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Status = "Completed11",
                             TotalAmount = 10011m,
-                            UserId = new Guid("8891c817-d862-446d-9ba9-af4b3227ab83")
+                            UserId = new Guid("b7470810-5d68-468c-be82-319a1a66b5a3")
                         });
                 });
 
@@ -639,141 +642,141 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a96d63d9-cafd-424c-a88c-558a38b072e8"),
+                            Id = new Guid("b2bcf755-5b09-4e59-a181-91ead4b01769"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("5aa01d3a-2ad7-45bd-8d5e-76bfc18f7b91"),
+                            Id = new Guid("61b5a81d-c7bf-44ee-87f4-964bbf792e63"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("b6c8b787-9591-4883-aaf3-b197b861d112"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("19faf434-f99b-46fd-b223-efab454c795b"),
                             Quantity = 1,
                             UnitPrice = 39990000m
                         },
                         new
                         {
-                            Id = new Guid("bcfe733f-74a1-4e37-a130-3195945c6f6e"),
+                            Id = new Guid("c7b40bbc-9b72-4a1b-8d45-ecaefbeae4cf"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("554e280a-40c9-4a48-bb3b-b362c8ab178b"),
-                            ProductId = new Guid("87010c49-da1b-484d-8baf-e53c27bbfb0c"),
+                            OrderId = new Guid("c1796fbd-1622-4032-9818-c4f49fbd5e2f"),
+                            ProductId = new Guid("65d2afc2-5755-418d-941b-396e6addd772"),
                             Quantity = 1,
                             UnitPrice = 29990000m
                         },
                         new
                         {
-                            Id = new Guid("26d06959-1e11-4752-b36e-383685950656"),
+                            Id = new Guid("22dd0f30-9948-49cf-8f40-ffd7e6789e5a"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("04bbb028-a5b5-4450-89b9-ab77c967089b"),
+                            Id = new Guid("897082d6-b866-4185-adc9-91f5963e0e96"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("5d2fa7c4-7051-4e63-900a-a23ab9fb12ba"),
+                            Id = new Guid("c17cafc6-6a30-4735-8882-9296c1ca7b58"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("afdaae31-5e9a-463d-a522-a1f1e2743d19"),
+                            Id = new Guid("1fa9a4da-c6ba-48e7-ba65-75feb5c5f872"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("ca6c9f1a-d9a7-4dc5-a605-6858cf923565"),
+                            Id = new Guid("f7f12e27-5325-4d97-a5c4-bc7a097b507d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("342ff427-a1ef-43e4-a8f4-d59f71362e6a"),
+                            Id = new Guid("c48a1db4-9abd-4bb7-8d6a-7cca81c40c27"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("6636301d-3509-42ce-b6ee-432d186f9029"),
+                            Id = new Guid("d398b698-68fb-4851-a052-d0a1dde087f7"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("7632da7f-0a66-4e3b-bc2e-0357c82ff2ec"),
+                            Id = new Guid("5f0b9126-0f44-411d-bc09-2123267cfe11"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("2ba6e994-ac4a-45c1-a010-7a84b916bea9"),
+                            Id = new Guid("37e12d79-4c5e-4c62-ab5c-79011a3b64ae"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("bc63219f-b999-400f-9b54-4cd63e2c501e"),
+                            Id = new Guid("c5a40a54-0095-468d-b591-9b1f3c0e297a"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         },
                         new
                         {
-                            Id = new Guid("6c155229-d9dd-488d-a415-5198ee7d33f7"),
+                            Id = new Guid("1324af89-240c-49f3-ac07-4ad154606795"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            OrderId = new Guid("c9fc2d56-19cc-48a5-a5b8-936c14fae664"),
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            OrderId = new Guid("980734ed-b1a2-4e9e-aea2-52f2c9b8ac30"),
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             Quantity = 2,
                             UnitPrice = 19990000m
                         });
@@ -824,167 +827,167 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
+                            Id = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Áo thun nam chất liệu cotton cao cấp, thoáng mát, phù hợp cho mọi hoạt động hàng ngày.",
                             IsDeleted = false,
                             Name = "Áo Thun Nam",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = "https://example.com/images/ao_thun_nam.jpg"
                         },
                         new
                         {
-                            Id = new Guid("b6c8b787-9591-4883-aaf3-b197b861d112"),
+                            Id = new Guid("19faf434-f99b-46fd-b223-efab454c795b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Quần jeans nữ dáng ôm, tôn dáng, chất liệu denim co giãn, phù hợp cho mọi dịp.",
                             IsDeleted = false,
                             Name = "Quần Jeans Nữ",
                             Price = 399000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = "https://example.com/images/quan_jeans_nu.jpg"
                         },
                         new
                         {
-                            Id = new Guid("87010c49-da1b-484d-8baf-e53c27bbfb0c"),
+                            Id = new Guid("65d2afc2-5755-418d-941b-396e6addd772"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Áo sơ mi nam công sở, thiết kế hiện đại, chất liệu vải cao cấp, thoáng mát.",
                             IsDeleted = false,
                             Name = "Áo Sơ Mi Nam",
                             Price = 299000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = "https://example.com/images/ao_so_mi_nam.jpg"
                         },
                         new
                         {
-                            Id = new Guid("38f883a9-cec8-4c47-be8c-971914c658f4"),
+                            Id = new Guid("ce276cc3-dab8-427c-a343-c72d8efb797c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Chân váy nữ xòe, thiết kế trẻ trung, chất liệu vải mềm mại, phù hợp cho mọi dịp.",
                             IsDeleted = false,
                             Name = "Chân Váy Nữ",
                             Price = 249000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = "https://example.com/images/chan_vay_nu.jpg"
                         },
                         new
                         {
-                            Id = new Guid("5b28ebcc-e93e-41e1-9bf9-fdc4763dd025"),
+                            Id = new Guid("4eaa6ab1-93f0-4635-90a3-58d13c1c1e06"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt0",
                             IsDeleted = false,
                             Name = "T-Shirt0",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("d307145e-0a9a-452a-a079-b3d50b7feea1"),
+                            Id = new Guid("c5db0d5a-15fc-4e73-b74a-78e378ed3dfa"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt1",
                             IsDeleted = false,
                             Name = "T-Shirt1",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("e2036b88-618b-4434-930a-6143bfec0e52"),
+                            Id = new Guid("b5962eb6-0674-4296-9e83-ab3de599bb23"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt2",
                             IsDeleted = false,
                             Name = "T-Shirt2",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("0ff57824-8810-485a-9767-147798cdd845"),
+                            Id = new Guid("2a0aea6a-8858-4264-b279-5c9ad860b9e5"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt3",
                             IsDeleted = false,
                             Name = "T-Shirt3",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("7e8bad4d-3d1c-448e-b2ec-e9b12d45c6e4"),
+                            Id = new Guid("2e43b0b5-f2b2-4d74-9e12-7e153e1a95b2"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt4",
                             IsDeleted = false,
                             Name = "T-Shirt4",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("59c95733-e5e6-4b3e-bba5-c13456bd8a2b"),
+                            Id = new Guid("c8708d31-917a-49cf-94b5-8aedc825ebf9"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt5",
                             IsDeleted = false,
                             Name = "T-Shirt5",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("b5208bd1-6cdb-4a01-87f1-9a6651ecc1a1"),
+                            Id = new Guid("7919ac33-4eae-409e-ac9b-b49851cd3164"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt6",
                             IsDeleted = false,
                             Name = "T-Shirt6",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("dcdda066-1bab-4ca3-ab48-d4dd8a77b0ff"),
+                            Id = new Guid("8f68bf06-6ef9-4c49-bec5-d3c9106d5e7d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt7",
                             IsDeleted = false,
                             Name = "T-Shirt7",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("c7d3fed5-8140-439c-a74f-220d61669d64"),
+                            Id = new Guid("d21132bb-4c91-4007-b697-8b97bd2c2866"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt8",
                             IsDeleted = false,
                             Name = "T-Shirt8",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("3598c444-c41a-4d74-976a-918cc55d2803"),
+                            Id = new Guid("865a578f-10dd-4c4e-9c63-eb58cefd74e2"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt9",
                             IsDeleted = false,
                             Name = "T-Shirt9",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         },
                         new
                         {
-                            Id = new Guid("146d4211-3b46-4b17-a95a-a12c918c3ce5"),
+                            Id = new Guid("86eb3235-91aa-409d-b199-fba95683a349"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Basic T-Shirt10",
                             IsDeleted = false,
                             Name = "T-Shirt10",
                             Price = 199000m,
-                            SellerId = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            SellerId = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             UrlImage = ""
                         });
                 });
@@ -1021,91 +1024,91 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("87fd0162-8a13-4f98-ab57-a304cdd294f8"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("d49d63d3-0058-43bd-8455-a1453f1b8a13"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("ed08f95b-cc74-4069-be8b-6640ce158981"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("cfa51756-a574-4267-9a82-a85f549b61b4"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("9681b955-d36c-4fe5-8612-8c7320ec3fab"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("485abe4a-a261-4e00-aff7-ebba30b73602"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("63bcbcd7-b461-4636-b3ca-d9f5112f45c9"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("a9147f37-70fb-4bda-b3b0-396916ed3700"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("ab73b236-7e84-4289-8021-c7a41d42d454"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("8669efb1-eb49-42e9-b4fb-79087ec2d346"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("b05ff33b-eaf5-40fd-b541-f9678e40e179"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("c62f6ed3-1a06-4bf9-822e-457c721e24dc"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("e8b4d396-374e-471c-b309-528f9126a321"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("f8a4cabf-a489-483e-b7ec-1acbe806b78a"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("2bf6d30e-8e8e-4ddf-be7a-a778da580d2b"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("2a306035-191f-4d01-ba55-f619e7de3478"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("5a4d6fb1-407c-4bfe-a9df-d877af320802"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("23330f34-4de4-408f-ae5e-c1a3a3d7f81f"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("ca817862-68ee-4b14-84b6-83da19410083"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("f7386c01-98b0-4b07-b111-4c979fe94cf3"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         },
                         new
                         {
-                            Id = new Guid("2c1db32b-adc1-4b0b-bb27-68d7bf63de0e"),
-                            CategoryId = new Guid("dd4b94c7-24ef-45e2-ade5-06003ffc2bc2"),
+                            Id = new Guid("00e37116-8443-4153-b42b-52f4e248b733"),
+                            CategoryId = new Guid("73f84fd2-68a9-4d98-9be2-85c55131d709"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductID = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a")
+                            ProductID = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd")
                         });
                 });
 
@@ -1141,91 +1144,91 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c863a6fa-b449-4aeb-b307-e4a310dc24a7"),
+                            Id = new Guid("97713485-d01c-4f3a-bbce-010f74fe2196"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("7558e0ff-efda-491a-bb5d-c788cf69c134"),
+                            Id = new Guid("8406d02e-4a8f-4dbe-8f4e-ef25849d94a7"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("186116df-50ac-49ad-8b01-9f5d454327fe"),
+                            Id = new Guid("1d6a9e28-0696-4694-a26c-a92c23eebd2e"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("dd757d65-3ead-4fe3-9ca8-07d381544857"),
+                            Id = new Guid("29be8955-0ed6-403e-9ea5-92bd92ac70af"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("1d972796-6164-4691-b4c3-3c0d11611cf4"),
+                            Id = new Guid("e24af1d6-5221-4c55-bf23-aa6d594190f2"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("0482e24c-fe41-4013-b367-e6f9bce84c9a"),
+                            Id = new Guid("877ea24c-6bdf-4fcb-934c-6551fae830ee"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("650f3b84-a010-4d70-9f8c-c939c4a7d438"),
+                            Id = new Guid("2e0929ee-9533-4180-91e0-44a52777c43f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("22088db1-6b77-4415-9332-58ec787c3d3e"),
+                            Id = new Guid("c568af14-8ec9-43f5-b044-b78897fec807"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("511dc3f1-f2a5-446a-b169-81b2191bcd48"),
+                            Id = new Guid("408d20be-87bb-47d4-ac62-deef1566cd25"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("36b555f0-4421-4f78-aafb-d5b28cc6459a"),
+                            Id = new Guid("7bdd9b8a-5108-44da-9126-8d69e67ac5fb"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         },
                         new
                         {
-                            Id = new Guid("b7e266e8-f8e3-4a29-aa70-29f31ac34b44"),
+                            Id = new Guid("8c6b27a7-ad24-4f1f-bf90-63c94d6485e8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
-                            ProductId = new Guid("f930f34a-8f1e-4880-9839-f60eb08fa53a"),
-                            StorageId = new Guid("f511404b-4ea3-493a-bf12-65e157180921")
+                            ProductId = new Guid("efc6239c-8134-4f9f-98bf-ea212ec1b4bd"),
+                            StorageId = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74")
                         });
                 });
 
@@ -1272,123 +1275,123 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3778eb62-d2d7-4599-bef0-200d342d595b"),
+                            Id = new Guid("cc171d60-444b-41be-a417-2172586d1dd8"),
                             CompanyAddress = "123 Main St, Cityville",
                             CompanyName = "ABC Company",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE123",
-                            UserId = new Guid("6cd18250-2f0f-4f39-acef-e4be69b9eb2b")
+                            UserId = new Guid("47b076a3-d798-4702-b6f0-ea8b950d99f3")
                         },
                         new
                         {
-                            Id = new Guid("4378cb34-27a1-4a1c-8d64-dd3bd80dbf18"),
+                            Id = new Guid("872bf6a1-32a4-453f-b5bd-41b0ba030583"),
                             CompanyAddress = "123 Main St, Cityville1",
                             CompanyName = "ABC Company1",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE1",
-                            UserId = new Guid("4e88318e-2947-4475-90f5-e96f957d7b1a")
+                            UserId = new Guid("f5d12cce-b112-4af2-a139-c20d6383b6d5")
                         },
                         new
                         {
-                            Id = new Guid("356239c6-c666-4fac-b782-ce0166a36ef4"),
+                            Id = new Guid("b22e5241-5b21-4f27-aa2c-3d22265ca710"),
                             CompanyAddress = "123 Main St, Cityville2",
                             CompanyName = "ABC Company2",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE2",
-                            UserId = new Guid("b32389a7-c793-4c70-b0ce-67017447f991")
+                            UserId = new Guid("c61ac8a1-9234-410c-889d-4861579cf4c6")
                         },
                         new
                         {
-                            Id = new Guid("99e27a16-10e9-41ea-b1d4-7cd663c2b73e"),
+                            Id = new Guid("a86dec5b-b323-4507-86cf-8404176d7513"),
                             CompanyAddress = "123 Main St, Cityville3",
                             CompanyName = "ABC Company3",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE3",
-                            UserId = new Guid("ed8f52ce-2934-46e3-8f01-dfa6b0da0344")
+                            UserId = new Guid("1dfe8cbb-e476-4a4d-b877-c07f149be580")
                         },
                         new
                         {
-                            Id = new Guid("fbbb29a0-b8df-4685-9238-93335d490f57"),
+                            Id = new Guid("4e57b0d4-55f0-4e0f-aa0a-343adbfae571"),
                             CompanyAddress = "123 Main St, Cityville4",
                             CompanyName = "ABC Company4",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE4",
-                            UserId = new Guid("0a2e86e2-495f-49a5-9d50-1d8adb6248d5")
+                            UserId = new Guid("8cd0e1ba-01be-4fa3-84b7-cbd9fb5dbdc5")
                         },
                         new
                         {
-                            Id = new Guid("de82b6c5-e2be-460a-81fe-3048b2386d7b"),
+                            Id = new Guid("1a9ccff8-7bee-4d18-ac0c-41d409c6f5e3"),
                             CompanyAddress = "123 Main St, Cityville5",
                             CompanyName = "ABC Company5",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE5",
-                            UserId = new Guid("6a31de00-b990-4d94-9f59-fb38b96e5c8f")
+                            UserId = new Guid("1ddce2c8-0032-4982-8383-a9b5c29472b7")
                         },
                         new
                         {
-                            Id = new Guid("fd20a73b-84fa-407f-9917-344866a30b7d"),
+                            Id = new Guid("949334a8-1b21-4f62-8628-8896e053076a"),
                             CompanyAddress = "123 Main St, Cityville6",
                             CompanyName = "ABC Company6",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE6",
-                            UserId = new Guid("d9629043-b6be-4637-9847-c149a2f63ce9")
+                            UserId = new Guid("d23b0da1-4cd7-48b5-aa80-ae4cd1b7609c")
                         },
                         new
                         {
-                            Id = new Guid("e8ca298d-6203-47c3-8a6f-578e26843cb7"),
+                            Id = new Guid("ee708045-2aa7-4753-8119-f80810e43922"),
                             CompanyAddress = "123 Main St, Cityville7",
                             CompanyName = "ABC Company7",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE7",
-                            UserId = new Guid("f4c07995-701e-4e7e-be73-6e1be55ecd7d")
+                            UserId = new Guid("51a8768d-590d-4831-978c-6b7960d7f39b")
                         },
                         new
                         {
-                            Id = new Guid("b8861924-763b-442f-930a-385c1f27bc70"),
+                            Id = new Guid("7ff0a4c4-95db-4859-9402-41b740fee9d7"),
                             CompanyAddress = "123 Main St, Cityville8",
                             CompanyName = "ABC Company8",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE8",
-                            UserId = new Guid("1e189e92-a0ab-416d-a708-9560d283bd2b")
+                            UserId = new Guid("b4c573be-8016-452a-8c21-afedc1f825a8")
                         },
                         new
                         {
-                            Id = new Guid("f34deb81-45c4-46e2-9f3f-8d3dda6942ab"),
+                            Id = new Guid("c63f0254-a3b9-447b-a1ec-8c6075016edb"),
                             CompanyAddress = "123 Main St, Cityville9",
                             CompanyName = "ABC Company9",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE9",
-                            UserId = new Guid("17fbafc5-630f-4941-a0ce-293148e13e86")
+                            UserId = new Guid("f6ed49d3-2a5a-44cc-a34b-c4aadc646e82")
                         },
                         new
                         {
-                            Id = new Guid("8be716f3-b634-43ea-947f-e5ec2d0ef9c9"),
+                            Id = new Guid("5fd743ad-5a5e-4c9f-87ca-43359fcd8d11"),
                             CompanyAddress = "123 Main St, Cityville10",
                             CompanyName = "ABC Company10",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE10",
-                            UserId = new Guid("ac332d83-c238-4d7c-a3b6-517d2c881474")
+                            UserId = new Guid("5845db73-d330-4a73-8f17-54c68091115d")
                         },
                         new
                         {
-                            Id = new Guid("949a4d3d-611c-4f5a-b1d4-b99bb4c22a99"),
+                            Id = new Guid("4362fb06-b29c-4ce4-8d85-bc9391318ec8"),
                             CompanyAddress = "123 Main St, Cityville11",
                             CompanyName = "ABC Company11",
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             TaxCode = "TAXCODE11",
-                            UserId = new Guid("8891c817-d862-446d-9ba9-af4b3227ab83")
+                            UserId = new Guid("b7470810-5d68-468c-be82-319a1a66b5a3")
                         });
                 });
 
@@ -1422,7 +1425,7 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f511404b-4ea3-493a-bf12-65e157180921"),
+                            Id = new Guid("8dc41dcb-759a-428a-99e2-b0b73c4b0d74"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1430,7 +1433,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4320a5a4-9038-473e-9971-993792c676e0"),
+                            Id = new Guid("24fe2cd1-7726-4d66-aa5d-bde0abe5f55c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1438,7 +1441,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e6432869-ddb7-4a7a-b040-3db306574186"),
+                            Id = new Guid("4e654d40-b7b3-4b39-a63c-75ce391ed09b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1446,7 +1449,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2f163ec8-2d32-4f94-a7fe-080976729700"),
+                            Id = new Guid("3a7f6ff3-fbcc-4cce-93ff-343b2297bdab"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1454,7 +1457,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bdbcb950-130e-4d5c-a6b5-f025fda6deac"),
+                            Id = new Guid("3e77fba5-42a9-4553-a6e9-785f76b69427"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1462,7 +1465,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f25bb0b6-30ff-415b-834c-73b84f9c51bc"),
+                            Id = new Guid("a36efeec-342e-497f-b883-e8cd35fe3fd3"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1470,7 +1473,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4199f2e4-facb-451a-bcc2-74e71e4867fc"),
+                            Id = new Guid("5e7483b9-35a3-4f82-ade0-c8bac93f5fc8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1478,7 +1481,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a46fd3bc-e076-42ae-a911-106d76defe4f"),
+                            Id = new Guid("fe8cb582-942e-4d8f-a73d-8bf40e22d0ff"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1486,7 +1489,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7207c826-d8e5-4eba-83f2-6c3004a60d10"),
+                            Id = new Guid("807ef838-bd26-4769-86f2-d05796017ac9"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1494,7 +1497,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("915a2fa6-b6d8-493a-b273-6232e678f0c7"),
+                            Id = new Guid("d1888070-ddeb-48e7-aec5-2452e3175473"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1502,7 +1505,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f0b62ef7-dc7a-47ce-aa26-baf0c2406ca6"),
+                            Id = new Guid("a4df5d5b-8c6b-46ee-a122-874e9b4a8779"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1510,7 +1513,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("40b36f30-c2e2-499d-95da-2b8018a608fe"),
+                            Id = new Guid("2756f7d4-f7c8-4a27-98e4-cd65148b8490"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1518,7 +1521,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ad0f25d1-468c-45c7-8a7e-bf6eed861cb1"),
+                            Id = new Guid("63af598c-cbfb-45f3-acb2-26a4024b8e1e"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1526,7 +1529,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("88e135d8-2562-4f0d-8789-9cbeea0ada4b"),
+                            Id = new Guid("3c4eafd4-220c-4c13-a385-a9628e239e09"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1534,7 +1537,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c288f0a8-8498-4fcf-a411-4f26f1c78c93"),
+                            Id = new Guid("db302bec-8b8c-485f-ac07-c52c24723601"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1542,7 +1545,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c81ae011-acd9-428b-91b3-def6c105d511"),
+                            Id = new Guid("195411d0-1976-45fb-85dc-5f1e480a1c13"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1550,7 +1553,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0b62aa9a-b731-4827-8293-afb3a6637578"),
+                            Id = new Guid("ac6dfe6c-bb17-48b6-be51-64a24b61c2ce"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1558,7 +1561,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b85876f5-3152-4816-a3c9-b9018cc3e3ba"),
+                            Id = new Guid("31039ac8-b97a-4f64-8d26-c5d745b46c9c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1566,7 +1569,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d9fa2157-3343-47d2-a123-d82c5b03aa80"),
+                            Id = new Guid("eb23ec35-bfee-4368-904d-d11f5e05e6a0"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1574,7 +1577,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b6d8cd93-3519-49df-8853-594c041f6a1b"),
+                            Id = new Guid("33ccf7b6-21a7-4122-b5c8-c707443e916b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1582,7 +1585,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3d8352cc-43cf-4c10-9786-03da70b25972"),
+                            Id = new Guid("0d5eb2c6-07b2-4304-aeb9-c0eef57e9c16"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1590,7 +1593,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f5152575-eb82-4d80-ae27-4f53b9819671"),
+                            Id = new Guid("6ee3399d-9ceb-4c0b-8e11-c676fc1a5c65"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1598,7 +1601,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f97071da-4ec1-4cff-9261-3a8b6b180dd9"),
+                            Id = new Guid("95098db8-e8c6-4e73-9fa4-9f36ee2aa31f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1606,7 +1609,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("89311cc9-ae5a-4831-b1de-95af25f0b6a8"),
+                            Id = new Guid("31010ad9-3eef-4486-be69-cf79fa220f4e"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1614,7 +1617,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5cac611b-f5a0-4172-b830-7ef11b5c4903"),
+                            Id = new Guid("e51e7d53-4c5c-4aea-8a5d-5b534b740949"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1622,7 +1625,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3f48af34-b407-4631-9254-9527d1086773"),
+                            Id = new Guid("b6d6f10f-8523-4dfd-aebb-61064d51fc73"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1630,7 +1633,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d5f75a8d-4deb-4a15-be43-865357658580"),
+                            Id = new Guid("e52e628b-b8cf-4c2c-99ff-4f4447f9b606"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1638,7 +1641,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f10b6c27-e564-4cd2-99b3-9d8c6927e8d9"),
+                            Id = new Guid("f531f97d-e042-41b0-addf-f98e62cfc87f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1646,7 +1649,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f0405c39-add2-4bcb-8bb0-8441915bb752"),
+                            Id = new Guid("4dcf8ea3-e069-4606-8074-b83ea3c66073"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1654,7 +1657,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e3306646-cd0b-4ea6-9917-53d43498f77d"),
+                            Id = new Guid("f2b45ab5-d8b3-4f41-94a1-deb5ffc0a1fe"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1662,7 +1665,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("879e6e90-0889-4d5c-bf8a-ed2198aebdeb"),
+                            Id = new Guid("962ffa72-0fb6-4c0e-8476-8dabd625f486"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1670,7 +1673,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1bad3a4f-a5b9-4b13-ab8f-a8fc24319e8e"),
+                            Id = new Guid("6cecd1c8-2dae-4324-a7d5-4562a3b21d1d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1678,7 +1681,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8dcbcdd5-b050-4a53-9062-fec3d446efd9"),
+                            Id = new Guid("a7c45dae-7b28-4d9c-93cb-7a9cc69293f0"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1686,7 +1689,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0cd9e9a6-ac83-47aa-ad34-90ce3a3f9d0c"),
+                            Id = new Guid("a96c79b4-d7a0-4035-8084-5585dc31c210"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1694,7 +1697,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("add6ffd1-060e-4b95-bd6c-9a4ce11a5aaa"),
+                            Id = new Guid("61783746-54bc-442e-b0da-507791d09cf8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1702,7 +1705,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4cd0d235-91d7-4cc1-ad3a-1d475214ce5e"),
+                            Id = new Guid("fce2bce1-bd94-477c-8087-fa601df8c81f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1710,7 +1713,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e8d9f27d-4a21-4c0b-b366-12808ac0e5a3"),
+                            Id = new Guid("c76a7e38-de84-402e-8f26-eeba6e80443b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1718,7 +1721,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1d141fbf-dd62-4ea5-b881-196e6ed002e2"),
+                            Id = new Guid("548cf434-4d3c-4683-af80-58ff6e81685c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1726,7 +1729,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("049b976f-3155-4989-bf8b-571c3a92e4d6"),
+                            Id = new Guid("b65f42b2-7a84-4a89-af88-61627f76fd7a"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1734,7 +1737,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ebc417c2-3098-4b7b-944a-c6a2e02ec54c"),
+                            Id = new Guid("2cfef277-89b8-413a-85df-cb89a52d8844"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1742,7 +1745,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fc064ee4-8970-47a7-be6a-a2c55632a2d7"),
+                            Id = new Guid("9231812c-e9a7-4fcd-b702-aff6f87bd6c2"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1750,7 +1753,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a9241ba1-7e66-452b-949c-e6e0b8215d32"),
+                            Id = new Guid("f59acc10-fba5-48d5-bf4f-3774f8f2b5f9"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1758,7 +1761,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("825c8a4b-223b-4eeb-9957-44ab7ab301ff"),
+                            Id = new Guid("ce4ed7d5-6fe0-44f0-bd60-3a69f22a022c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1766,7 +1769,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9a87b7bd-ffd6-4c3d-8dc5-d2566ee2519e"),
+                            Id = new Guid("29297066-77d6-435e-8b7b-ab82b1d55f71"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1774,7 +1777,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a2f8d23a-164e-449c-86e2-a67005882d79"),
+                            Id = new Guid("65c2036b-149a-4369-bd60-c3f580694c69"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1782,7 +1785,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("951247fc-7b84-4d6a-b3e0-09ad8a815863"),
+                            Id = new Guid("df729a3c-2bee-4cd2-b565-bd019e1145c6"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1790,7 +1793,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("60aa71cf-baef-4a81-966f-16f57d7e36df"),
+                            Id = new Guid("20951727-c745-45ed-b72e-64b038f4a1e0"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1798,7 +1801,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("05790b2c-bca4-42c4-8da2-3b36aa7b43d9"),
+                            Id = new Guid("e2800853-f9a9-46c3-8b41-42516cac89ec"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1806,7 +1809,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("904102d5-63d1-47ca-b6d6-02492e5cff76"),
+                            Id = new Guid("7f53ba64-63e1-4a85-b29c-606bb35aac0f"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1814,7 +1817,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7ff7610e-c54b-4547-a89c-689103c7aa28"),
+                            Id = new Guid("1ea72c0a-02df-46b3-ae3f-9c65ff21847a"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1822,7 +1825,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("45ce2f54-d7e4-426c-8a00-78e36d29a69f"),
+                            Id = new Guid("01b189df-9bb4-4c17-b89c-0173b9a7af46"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1830,7 +1833,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1c56021b-0b92-4bbf-8f32-c5f3accb9cdf"),
+                            Id = new Guid("db3e5024-105d-4df3-a61a-a3079675f81d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1838,7 +1841,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e863d7a9-f4de-4c7e-a2de-cd83e84b3314"),
+                            Id = new Guid("41f30694-489b-41c6-a77d-1e77b92eb69d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1846,7 +1849,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a1e9439d-7c34-4dab-b207-83ee6c813446"),
+                            Id = new Guid("a32fd20b-f2e2-4606-a963-e37fa4a40797"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1854,7 +1857,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("504c5293-45e3-40a6-b50b-8cf57344b4d8"),
+                            Id = new Guid("dc043136-5a05-49c8-8e81-3262e933c133"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1862,7 +1865,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c2078180-7318-4018-86f4-8c87bdb8e54e"),
+                            Id = new Guid("0bfa83bc-1fe6-44cd-b997-68cef2d9e2ce"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1870,7 +1873,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ce4bca2c-cf38-4f76-b205-b8ec7b988ea4"),
+                            Id = new Guid("26945784-7038-478a-90d7-7c3953a22ce1"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1878,7 +1881,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("69e93a37-cebf-4d48-bc89-f69d384e4296"),
+                            Id = new Guid("63176417-d8ce-4479-8169-a59fe7afd975"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1886,7 +1889,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d7c500e7-9716-433c-bbd4-b679dc8a3e0f"),
+                            Id = new Guid("e34c9e00-4d8e-4182-b66c-ac437282dfd7"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1894,7 +1897,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ff3bf3ee-6436-45fd-a577-02dd7327853f"),
+                            Id = new Guid("bfd3d2bf-b57e-4083-81f1-06a8b7316fa3"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1902,7 +1905,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("859aa85c-0145-4f25-a300-6dfab8cb944f"),
+                            Id = new Guid("2c79f08a-f9d8-46a6-a425-d9080ede6120"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1910,7 +1913,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7733ea06-8b9e-4568-b1b9-b06286df8675"),
+                            Id = new Guid("c5d0169b-b568-48e9-9aee-88b67a6ad111"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1918,7 +1921,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f098be0f-2221-4c6b-854f-788f88e43435"),
+                            Id = new Guid("7bfe07e2-e849-442c-9f2b-c8bfe60da3fd"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1926,7 +1929,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b09ab14a-06cf-4105-9ba1-5ab64d77163c"),
+                            Id = new Guid("34a7344f-4080-4f4a-94d0-09b756ca22fa"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1934,7 +1937,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("47cbf735-07be-41f4-a693-57d773d23c1e"),
+                            Id = new Guid("d6aef704-8427-4705-aae1-034df27a6c40"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1942,7 +1945,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f359bfe1-21e6-4116-bdcf-54b31601184f"),
+                            Id = new Guid("4632e036-59c1-40da-aaf9-288fef16f0cb"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1950,7 +1953,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("eacebbb7-f5bb-4144-af76-c90c1e2d8519"),
+                            Id = new Guid("3d13ca59-e842-473d-830e-a718ec75b5df"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1958,7 +1961,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ac51b9e4-5823-43b3-a786-2777dc8526bb"),
+                            Id = new Guid("5cf97fe3-d71b-4e43-aeb2-ebc970bd4a39"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1966,7 +1969,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa3a4734-6aa9-4618-b926-8ab7551b6b36"),
+                            Id = new Guid("4cadc9ed-806c-47ae-8c2c-7a567be005fa"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1974,7 +1977,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("242a65f3-f757-4877-9512-4d2ddaa7726d"),
+                            Id = new Guid("05ae6002-6774-4b0d-b1b3-84103fc12b20"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1982,7 +1985,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fad8b395-a82e-4a6a-bd3d-4bfc37298fe6"),
+                            Id = new Guid("30d2ab1f-2e7e-468f-b0bf-d5cca8619510"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1990,7 +1993,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a8f4d042-dce7-40f6-a6c3-a9ffb57d6e08"),
+                            Id = new Guid("1b882aa8-e93a-4c97-9130-565bb408492d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -1998,7 +2001,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dd0b7826-d458-444c-be52-743ab7190efe"),
+                            Id = new Guid("d38b2dec-f11f-459c-a3ae-000aec1fdb00"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2006,7 +2009,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c7ce510d-2d0b-4410-a1a5-801238f6ab3b"),
+                            Id = new Guid("c01c41d9-95b9-4063-af77-bf00d92f978a"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2014,7 +2017,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("706f7d19-5e3f-4908-8dff-006ad7dfc46c"),
+                            Id = new Guid("68e99e1a-3c6a-42b1-b9d8-6fccd0292341"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2022,7 +2025,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0183cc5a-7328-46a7-b3cc-0475796f2bb9"),
+                            Id = new Guid("f7c00ec7-8de3-4069-b8b7-424143f8196d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2030,7 +2033,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e55dc51a-03a7-48e7-a300-b490f2e71a27"),
+                            Id = new Guid("e47dfa00-9302-4af5-9f13-f7e54272dbdf"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2038,7 +2041,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9f7b15f5-eb32-4200-8595-28f66ca2e8ba"),
+                            Id = new Guid("80d09d5e-01f4-438a-8ad7-f953b76bfa00"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2046,7 +2049,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a8246c2c-c198-4a20-89ac-37defa074f8a"),
+                            Id = new Guid("238bddaa-f035-4498-8c3a-a7d09770f02b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2054,7 +2057,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f5e0dcde-f86a-40ac-adbf-cc8fc653f3bd"),
+                            Id = new Guid("197c549d-e4ad-4079-9fc7-798507fa1584"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2062,7 +2065,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("650a7c3c-938a-4057-ae84-357e353f613a"),
+                            Id = new Guid("ce146adc-983d-47a4-bc02-66a7f36370cb"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2070,7 +2073,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("39485431-1092-4529-8ca8-e01e90e997fd"),
+                            Id = new Guid("91a7dedc-cc5a-4c90-b5b0-f617a7c6e2da"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2078,7 +2081,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0800bae6-7d2e-4fb7-807b-1cb2f3c13181"),
+                            Id = new Guid("06dc9801-8ca0-46fe-91c2-987ad2ddc4c0"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2086,7 +2089,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2c3b0216-b89b-4006-806a-8c3aa04cc19b"),
+                            Id = new Guid("596d9c54-12c2-4df0-80d8-20da058562a8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2094,7 +2097,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4eaed66e-a94c-4daa-8f0b-710c94f853d6"),
+                            Id = new Guid("743dfdc1-31b1-418d-9ae1-d6bbee321986"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2102,7 +2105,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8d88a840-198a-415c-afd9-78980c586f49"),
+                            Id = new Guid("22b71218-c7d2-450b-9c32-a3b1fd402c51"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2110,7 +2113,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("88b49e40-457d-4d2f-93b6-311c486f007a"),
+                            Id = new Guid("f68c6a27-027b-49dc-acd7-782a5bb336d7"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2118,7 +2121,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("74f949cc-8700-4d78-87cf-5dbfa4e43d10"),
+                            Id = new Guid("dd20a275-c7e2-4cfb-8eb7-084ce5e508ac"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2126,7 +2129,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("80943423-fb0d-475d-afe7-e1ef3e8ba3b6"),
+                            Id = new Guid("cdcb37d0-c82b-47c1-950b-80ca44388ddb"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2134,7 +2137,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("17f933ec-f147-4868-8ec7-d545668f422b"),
+                            Id = new Guid("124fc7b8-bd91-420b-a952-1233c8e8d809"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2142,7 +2145,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("802e26ae-f458-46c4-b412-c63e17dce953"),
+                            Id = new Guid("3f1a2711-67e0-4ef7-8f63-f84332201a93"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2150,7 +2153,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7be98691-868a-4dca-a35c-bda5e53ef107"),
+                            Id = new Guid("5578da26-7879-434e-99de-2247dff3489d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2158,7 +2161,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8782d675-2e8d-4cc6-9d2b-78e04eaecbdd"),
+                            Id = new Guid("df7eee66-1b5c-4374-8acc-3eafc68cc9f4"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2166,7 +2169,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fd024c14-2b93-4b77-be56-9b4746089550"),
+                            Id = new Guid("4f39942d-cc9a-4dfc-a6ec-80f52b575886"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2174,7 +2177,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e1ce7769-fd1a-46d3-89d7-9ad3081ef418"),
+                            Id = new Guid("281dcec9-f180-4120-a197-5b6ba9ce8d23"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2182,7 +2185,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ba63a116-87ba-424c-a41a-ec8aac0a727e"),
+                            Id = new Guid("e4887bf4-74f6-4d9e-a7f4-873aa827a0a8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2190,7 +2193,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e1f5046b-2eb4-4d4a-9e0c-c5673e60c4db"),
+                            Id = new Guid("f9a1117f-3316-4925-bec0-fbda658d6b48"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2198,7 +2201,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("da0e8c8c-c495-42f0-a53b-60c4c547f197"),
+                            Id = new Guid("731e60a6-8aaa-431e-94b1-d7c40675edf1"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2206,7 +2209,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b34d10e3-64aa-4282-afb9-b802e1c95235"),
+                            Id = new Guid("c14118d2-b236-43d6-8283-ca69d85ec1a0"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2214,7 +2217,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a91976ee-7d27-4423-ab0d-7b676fc61c78"),
+                            Id = new Guid("133067a1-851e-4e6f-bb40-380b5360c8f8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2222,7 +2225,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fb3eeb93-74da-4844-9104-24692fa3989a"),
+                            Id = new Guid("f0275a23-a6a9-4426-ad10-172b1de1df71"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2230,7 +2233,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("780d41f0-99f9-484b-943a-ba4fec2544a7"),
+                            Id = new Guid("8c6e3177-0461-45b9-b596-f1383c8ef6dc"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             Price = 10000m,
@@ -2307,7 +2310,7 @@ namespace TetPee.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6cd18250-2f0f-4f39-acef-e4be69b9eb2b"),
+                            Id = new Guid("47b076a3-d798-4702-b6f0-ea8b950d99f3"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "tan182205@gmail.com",
                             FirstName = "Tan",
@@ -2315,12 +2318,12 @@ namespace TetPee.Repository.Migrations
                             IsDeleted = false,
                             IsVerify = false,
                             LastName = "Tran",
-                            Role = "User",
+                            Role = "user",
                             VerifyCode = 0
                         },
                         new
                         {
-                            Id = new Guid("17ee3cb9-9e49-4a44-887c-789205cba897"),
+                            Id = new Guid("aa9b32af-cb28-4544-997d-efeec184005b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "tan182206@gmail.com",
                             FirstName = "Tan",
@@ -2328,25 +2331,12 @@ namespace TetPee.Repository.Migrations
                             IsDeleted = false,
                             IsVerify = false,
                             LastName = "Tran",
-                            Role = "User",
+                            Role = "user",
                             VerifyCode = 0
                         },
                         new
                         {
-                            Id = new Guid("6b11f036-a212-49b1-904a-6ad7ea43d638"),
-                            CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Email = "piedteam@gmail.com",
-                            FirstName = "Pied",
-                            HashedPassword = "PiedTeam",
-                            IsDeleted = false,
-                            IsVerify = false,
-                            LastName = "Team",
-                            Role = "Admin",
-                            VerifyCode = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("4e88318e-2947-4475-90f5-e96f957d7b1a"),
+                            Id = new Guid("f5d12cce-b112-4af2-a139-c20d6383b6d5"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan0@gmail.com",
                             FirstName = "Tan0",
@@ -2359,7 +2349,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b32389a7-c793-4c70-b0ce-67017447f991"),
+                            Id = new Guid("c61ac8a1-9234-410c-889d-4861579cf4c6"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan1@gmail.com",
                             FirstName = "Tan1",
@@ -2372,7 +2362,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ed8f52ce-2934-46e3-8f01-dfa6b0da0344"),
+                            Id = new Guid("1dfe8cbb-e476-4a4d-b877-c07f149be580"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan2@gmail.com",
                             FirstName = "Tan2",
@@ -2385,7 +2375,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0a2e86e2-495f-49a5-9d50-1d8adb6248d5"),
+                            Id = new Guid("8cd0e1ba-01be-4fa3-84b7-cbd9fb5dbdc5"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan3@gmail.com",
                             FirstName = "Tan3",
@@ -2398,7 +2388,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6a31de00-b990-4d94-9f59-fb38b96e5c8f"),
+                            Id = new Guid("1ddce2c8-0032-4982-8383-a9b5c29472b7"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan4@gmail.com",
                             FirstName = "Tan4",
@@ -2411,7 +2401,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d9629043-b6be-4637-9847-c149a2f63ce9"),
+                            Id = new Guid("d23b0da1-4cd7-48b5-aa80-ae4cd1b7609c"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan5@gmail.com",
                             FirstName = "Tan5",
@@ -2424,7 +2414,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f4c07995-701e-4e7e-be73-6e1be55ecd7d"),
+                            Id = new Guid("51a8768d-590d-4831-978c-6b7960d7f39b"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan6@gmail.com",
                             FirstName = "Tan6",
@@ -2437,7 +2427,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1e189e92-a0ab-416d-a708-9560d283bd2b"),
+                            Id = new Guid("b4c573be-8016-452a-8c21-afedc1f825a8"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan7@gmail.com",
                             FirstName = "Tan7",
@@ -2450,7 +2440,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("17fbafc5-630f-4941-a0ce-293148e13e86"),
+                            Id = new Guid("f6ed49d3-2a5a-44cc-a34b-c4aadc646e82"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan8@gmail.com",
                             FirstName = "Tan8",
@@ -2463,7 +2453,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ac332d83-c238-4d7c-a3b6-517d2c881474"),
+                            Id = new Guid("5845db73-d330-4a73-8f17-54c68091115d"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan9@gmail.com",
                             FirstName = "Tan9",
@@ -2476,7 +2466,7 @@ namespace TetPee.Repository.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8891c817-d862-446d-9ba9-af4b3227ab83"),
+                            Id = new Guid("b7470810-5d68-468c-be82-319a1a66b5a3"),
                             CreatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "Tan10@gmail.com",
                             FirstName = "Tan10",
