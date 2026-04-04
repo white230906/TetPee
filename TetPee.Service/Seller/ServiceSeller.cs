@@ -19,7 +19,7 @@ public class ServiceSeller: IServiceSeller
     
     public async Task<Base.Response.PageResult<ResponseSeller.GetSellerResponse>> GetSellers(string? searchTerm, int pageSize, int pageIndex)
     {//đi từ role thì nó chưa tối ưu performance vì trong user có nhiều role mà
-        var query = _dbContext.Users.Where(x => x.Role == "seller");
+        var query = _dbContext.Users.Where(x => x.Role == "Seller");
         if (searchTerm != null)
         {
             query = query.Where(x => x.FirstName.Contains(searchTerm));
@@ -57,7 +57,7 @@ public class ServiceSeller: IServiceSeller
     public async Task<ResponseSeller.GetSellerDetailResponse> GetSellersById(Guid sellerId)
     {
         var query = _dbContext.Users.Where(x => x.Id == sellerId 
-                                                            && x.Role == "seller");
+                                                            && x.Role == "Seller");
         var selectedQuery = query
             .Select(x => new ResponseSeller.GetSellerDetailResponse()
         {

@@ -27,7 +27,7 @@ public class CategoryController: ControllerBase
             .SuccessResponse(result, "Categories retrieved", HttpContext.TraceIdentifier));
     }
     
-    [HttpGet("{parentId}/childrens")]
+    [HttpGet("{parentId}/children")]
     public async Task<IActionResult> GetCategories(Guid parentId)
     {
         var categoires =  await _categoryService.GetCategoryByParentId(parentId);
