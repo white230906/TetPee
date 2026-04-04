@@ -37,6 +37,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         
     public static Guid UserId1 = Guid.NewGuid(); //Seller
     public static Guid UserId2 = Guid.NewGuid(); //User
+    public static Guid UserId3 = Guid.NewGuid();
     
     public static Guid SellerId1 = Guid.NewGuid();
     
@@ -161,12 +162,21 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     FirstName = "Tan",
                     LastName = "Tran",
                     HashedPassword = "hashed_password_1",
+                },
+                new ()
+                {
+                    Id = UserId3,
+                    Email = "piedteam@gmail.com",
+                    FirstName = "Pied",
+                    LastName = "Team",
+                    HashedPassword = "PiedTeam",
+                    Role = "Admin"
                 }
             };
             //seed data
             
             
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 var id =  Guid.NewGuid();
                 userIds.Add(id);
@@ -176,7 +186,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     var newUser = new User()
                     {
                         Id = id,
-                        Role = "user",
+                        Role = "User",
                         Email = "Tan" + i + "@gmail.com",
                         FirstName = "Tan" + i,
                         LastName = "Tran" + i,
@@ -189,7 +199,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     var newUser = new User()
                     {
                         Id = id,
-                        Role = "seller",
+                        Role = "Seller",
                         Email = "Tan" + i + "@gmail.com",
                         FirstName = "Tan" + i,
                         LastName = "Tran" + i,
@@ -300,7 +310,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 },
             };
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -390,7 +400,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     SellerId = SellerId1
                 }
             };
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 var id = Guid.NewGuid();
                 productIds.Add(id);
@@ -508,7 +518,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 },
             };
 
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 var newOrderDetail = new OrderDetail()
                 {
@@ -563,7 +573,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 .OnDelete(DeleteBehavior.Cascade);
 
             var productCategories = new List<ProductCategory>();
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 var newProductCategory = new ProductCategory()
                 {
@@ -652,7 +662,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                 .OnDelete(DeleteBehavior.Cascade);
             
             var productStorages =  new List<ProductStorage>();
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 var newProductStorage = new ProductStorage()
                 {
