@@ -14,7 +14,7 @@ using IService = TetPee.Service.User.IService;
 using IdentityService = TetPee.Service.Identity;
 using  JwtService = TetPee.Service.JwtService;
 using  CartService = TetPee.Service.Cart;
-
+using OrderService = TetPee.Service.Order;
 
 //khai báo những cái đồ chơi mà mình sài
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +40,8 @@ builder.Services.AddJwtServices(builder.Configuration);
     //login có token, nhưng test API trên Swagger thì ko được gửi đi
     //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
+
+//builder.Services.AddScoped<OrderService.IService, OrderService.Service>();
 
 builder.Services.AddScoped<CartService.IService, CartService.Service>();
 builder.Services.AddScoped<MailService.IService, MailService.Service>();
