@@ -467,7 +467,7 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
                     UserId = userId,
                     Address = "Bien hoa, Dong Nai" + i,
                     TotalAmount = 10000 + i,
-                    Status = "Completed" + i
+                    Status = "Completed" 
                 };
                 i++;
                 orders.Add(newOrder);
