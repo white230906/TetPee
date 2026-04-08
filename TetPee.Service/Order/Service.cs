@@ -16,18 +16,26 @@ public class Service: IService
         _httpContext = httpContext;
     }
     
+    //flow:
+    // - Lấy user -> Kiểm tra sản phẩm -> Tính tiền -> Tạo Order + trả QR
     public async Task<Response.CreateOrderResponse> CreateOrder(Request.CreateOrderRequest request)
     {
+        //lấy thông tin user đang đăng nhập từ token
+        //vì mình cần phải biết được ai là người đặt hàng (User -> Order)
         var userId = _httpContext.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "UserId")?.Value;
-        var userIdGuid = Guid.Parse(userId!);
+        var userIdGuid = Guid.Parse(userId!);//chuyển từ string -> Guid
         
         //List Object -> List Guid => Mapping List thì xài Select
-        var productIts = request.Products.Select(x => x.ProductId).Distinct().ToList();
-        //handler trường hợp người ta truyền vô linh tinh, tránh xung đột khóa ngoại
-        var query = _dbContext.Products.Where(x => productIts.Contains(x.Id));
+        //Lấy ra danh sách ProductId của thằng User đó, loại bỏ trùng -> convert sang List
+        var productIds = request.Products.Select(x => x.ProductId).Distinct().ToList();
         
+        //Coi thử trong DB của mình, thằng nào có trong List ProductIds thì đếm
+        //handler trường hợp người ta truyền vô linh tinh, tránh xung đột khóa ngoại
+        var query = _dbContext.Products.Where(x => productIds.Contains(x.Id));
+        //đếm sản phẩm
         var productCount = await query.CountAsync();
-        if (productCount != productIts.Count)
+        //check thử có những sản phẩm không tồn tại không
+        if (productCount != productIds.Count)
         {
             throw new Exception("Some products are not identical");
         }
@@ -53,7 +61,10 @@ public class Service: IService
         {
             throw new Exception("Total amount must be greater than 0");
         }
-
+        //flow ở trên: lấy thông tin yser
+        //  check xem product (có nằm trong db không)
+        //  tính tiền
+        //xong ok rồi thì tiêns hành tạo Order
         var order = new Repository.Entity.Order()
         {
             Id = Guid.NewGuid(),
@@ -66,6 +77,7 @@ public class Service: IService
         _dbContext.Add(order);
         await _dbContext.SaveChangesAsync();
         
+        //tạo OrderDetail
         List<OrderDetail> orderDetails = new List<OrderDetail>();
         foreach (var prod in result)
         {
@@ -88,9 +100,11 @@ public class Service: IService
             _dbContext.AddRange(orderDetails);
             await _dbContext.SaveChangesAsync();
         }
-
+        //dòng này để tết các giao dịch nào là của TetPee mình nè!!!
+        //Bank gửi về thì mình viết order nào
         string description = $"TETPEE-{order.Id}";
 
+        //Trả về cho client những thứ này nhé
         var response = new Response.CreateOrderResponse()
         {
             OrderId = order.Id,
@@ -98,23 +112,23 @@ public class Service: IService
             BankName = "MBBank",
             BankAccount = "0384875317",
             Description =description ,
-            QRCodee = ""
+            QRCode = ""
         };
-        
+        //tạo qrcode này
         string qrCode = $"https://qr.sepay.vn/img?" +
                         $"acc={response.BankAccount}&" +
                         $"bank={response.BankName}&" +
                         $"amount={(int)totalAmount}&" +
                         $"des={description}&" +
                         $"template=qronly";
-        response.QRCodee = qrCode;
+        response.QRCode = qrCode;
         return response;
     }
 
     public async Task SepayWebhookHandler(Request.SepayWebhookRequest request)
     {
         var description = request.Code;//TETPEEORDERID,
-        //code và tổng số tiền là quan trọng trong callbac aPI
+        //code và tổng số tiền là quan trọng trong callback aPI
         
         var raw = description.Replace("TETPEE", ""); // => ORDERID
         
