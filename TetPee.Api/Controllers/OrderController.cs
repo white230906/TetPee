@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TetPee.Repository.Entity;
+using TetPee.Service.Models;
 using TetPee.Service.Order;
 
 namespace TetPee.Api.Controllers;
@@ -16,6 +17,14 @@ public class OrderController: ControllerBase
     [HttpPost("")]
     public async Task<IActionResult> CreateOrder(Request.CreateOrderRequest createOrderRequest)
     {
-        return Ok("");
+        var result =  await  _orderService.CreateOrder(createOrderRequest);
+        return Ok(ApiResponseFactory.SuccessResponse(result, "Created Order Successfully", HttpContext.TraceIdentifier));
     }
+    
+    [HttpPost("sepay/webhook")]
+    public async Task<IActionResult> SepayWebhook(Request.SepayWebhookRequest  sepayWebhookRequest)
+    {
+        await _orderService.SepayWebhookHandler(sepayWebhookRequest);
+        return Ok(ApiResponseFactory.SuccessResponse("", "Webhook response", HttpContext.TraceIdentifier));
+    } 
 }

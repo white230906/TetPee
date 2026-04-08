@@ -41,8 +41,7 @@ builder.Services.AddJwtServices(builder.Configuration);
     //Swagger sẽ có nút Authorize, login thì mọi req đều có token
 builder.Services.AddSwaggerServices();
 
-//builder.Services.AddScoped<OrderService.IService, OrderService.Service>();
-
+builder.Services.AddScoped<OrderService.IService, OrderService.Service>();
 builder.Services.AddScoped<CartService.IService, CartService.Service>();
 builder.Services.AddScoped<MailService.IService, MailService.Service>();
 builder.Services.AddScoped<MediaService.IService, CloudinaryService.Service>();

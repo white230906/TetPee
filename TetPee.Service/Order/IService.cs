@@ -2,6 +2,7 @@ namespace TetPee.Service.Order;
 
 public interface IService
 {
-    public Task CreateOrder(Request.CreateOrderRequest request);
-    
+    public Task<Response.CreateOrderResponse> CreateOrder(Request.CreateOrderRequest request);
+ 
+    public Task SepayWebhookHandler(Request.SepayWebhookRequest request);
 }
