@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Quartz;
 using TetPee.Api.Extensions;
 using TetPee.Api.Middleware;
 using TetPee.Repository;
+using TetPee.Service.BackgroundJobService;
 using TetPee.Service.Category;
 using TetPee.Service.Seller;
 using TetPee.Service.User;
@@ -53,6 +55,26 @@ builder.Services.AddScoped<IServiceCategory, ServiceCategory>();
 builder.Services.AddScoped<IService, Service>();
 builder.Services.AddScoped<ProductService.IService, ProductService.Service>();
 
+builder.Services.AddQuartz(options =>
+{
+    var jobKey = new JobKey(nameof(ProcessTransactionPendingJob));
+
+    options
+        .AddJob<ProcessTransactionPendingJob>(jobKey)
+        .AddTrigger(trigger =>
+            trigger
+                .ForJob(jobKey)
+                .WithSimpleSchedule(schedule => schedule
+                    .WithIntervalInMinutes(1)
+                    .RepeatForever()
+                )
+        );
+});
+
+builder.Services.AddQuartzHostedService(options =>
+{
+    options.WaitForJobsToComplete = true;
+});
 
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();//học
 
