@@ -100,6 +100,8 @@ public class Service: IService
             _dbContext.AddRange(orderDetails);
             await _dbContext.SaveChangesAsync();
         }
+        //Tìm những sản phẩm chứa trong Cart với các id sau productIds của UserId(productIds cua User nao)
+        
         //dòng này để tết các giao dịch nào là của TetPee mình nè!!!
         //Bank gửi về thì mình viết order nào
         string description = $"TETPEE-{order.Id}";
@@ -162,7 +164,9 @@ public class Service: IService
             throw new Exception("Order not found in description");
         }
         //kiểm tra order có tồn tại trong DB hay không
-        var query = _dbContext.Orders.Where(x => x.Id == orderId);
+        var query = _dbContext.Orders
+            .Where(x => x.Id == orderId)
+            .Include(x => x.OrderDetails);
         var order = await query.FirstOrDefaultAsync();
         if (order == null)
         {
@@ -181,6 +185,17 @@ public class Service: IService
         order.Status = "Completed";
         _dbContext.Update(order);
         await _dbContext.SaveChangesAsync();
+        
+        var productIds = order.OrderDetails.Select(x => x.ProductId).ToList();
+        
+        var queryProductCart = _dbContext.CartDetails.Where(x => 
+            x.Cart.UserId == order.UserId &&
+            productIds.Contains(x.ProductId));
+        
+        var removeCartDetails = await queryProductCart.ToListAsync();
+        // Tìm được rổi thì xóa nó đi
+        _dbContext.RemoveRange(removeCartDetails);
+        await _dbContext.SaveChangesAsync();       
     }
 }
 //Bản chất của SePay
