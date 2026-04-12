@@ -25,6 +25,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();// nằm đầu tiên để kiểm soát tất cả cái đi vào
 builder.Services.AddHttpContextAccessor();
+/*
+ * HttpContext chứa tồn bộ thông tin của request hiện tại:
+ *  Users(người dùng đăng nhập)
+ *  Headers
+ * Cookies
+ * Req/Res
+ * Claims(Jwt, auth)
+ */
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
