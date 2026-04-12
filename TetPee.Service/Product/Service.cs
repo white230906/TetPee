@@ -8,7 +8,9 @@ namespace TetPee.Service.Product;
 public class Service: IService
 {
     private readonly AppDbContext _dbContext;
-    private readonly IHttpContextAccessor _httpContext;//lấy claim trong token
+    private readonly IHttpContextAccessor _httpContext;
+    //thằng này chứa thông tin của req
+    // giúp lấy payload trong token
     
     public Service(AppDbContext dbContext, IHttpContextAccessor httpContext)
     {
@@ -18,8 +20,9 @@ public class Service: IService
     public async Task<string> CreateProduct(Request.CreateProductRequest request)
     {
         var sellerId = _httpContext.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "SellerId")?.Value;
-        
+        //trong request hiện tại lấy claims của user đó 
         var sellerIdGuid = Guid.Parse(sellerId!);
+        //chuyển về dạng Guild
         
         var existingProductQuery =  _dbContext.Products.Where
             (x => x.Name.ToLower().Trim() == request.Name.ToLower().Trim());
