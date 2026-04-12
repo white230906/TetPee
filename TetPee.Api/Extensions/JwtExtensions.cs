@@ -28,7 +28,7 @@ public static class JwtExtensions
             {
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidateIssuer = true,//dung sigature, dung issure nua, dung server
+                    ValidateIssuer = true,//dung signature, dung issure nua, dung server
                     ValidateAudience = true, // 
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,

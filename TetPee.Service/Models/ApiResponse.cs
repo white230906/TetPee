@@ -1,6 +1,6 @@
 namespace TetPee.Service.Models;
-
-public class ApiResponse
+// chuẩn hóa format API response
+public class ApiResponse// dạng mà API Response
 {
     public bool Success { get; set; }
     public string Message { get; set; } = null!;
@@ -9,8 +9,19 @@ public class ApiResponse
     public string? TraceId { get; set; }
     public DateTime TimestampUtc { get; set; }
 }
-
+//nếu viết như trên không, thì mỗi lần mình return cho mội cái API thì phải
+// return new ApiResponse
+// {
+//     Success = true,
+//     Message = "OK",
+//     Data = data,
+//     TimestampUtc = DateTime.UtcNow
+// }; -> vậy nếu có 100 API thì sao, viết lại đoạn này 100 lần à
+//=> cần một cái máy tạo respoonse tự động
 public static class ApiResponseFactory
+//static nghĩa là: không cần tạo object vẫn dùng được
+//Ví dụ: ApiResponseFactory.SuccessResponse(...)
+//  Không cần phải: new ApiResponseFactory()
 {
     public static ApiResponse SuccessResponse(object? data, 
         string message = "Request processed successfully",
@@ -26,7 +37,9 @@ public static class ApiResponseFactory
         };
     }
 
-    public static ApiResponse ErrorResponse(string message, object? errors = null, string? traceId = null)
+    public static ApiResponse ErrorResponse(string message, 
+        object? errors = null, 
+        string? traceId = null)
     {
         return new ApiResponse
         {

@@ -55,7 +55,7 @@ public class Service: IService
             //token lúc này có đủ 3 phần: Header + Payload + Signature
             //Header: tự động tạo gồm: thuật toán, loại token
             //payload: tokenOptions = new JwtSecurityToken: có chứa thông tin người dùng
-            //signature: tạo từ headler + payload + secretKey + thuật toán
+            //signature: tạo từ header + payload + secretKey + thuật toán
         return tokenString;
     }
 //FLOW

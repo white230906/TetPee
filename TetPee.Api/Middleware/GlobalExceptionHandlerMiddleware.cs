@@ -5,7 +5,11 @@ namespace TetPee.Api.Middleware;
 public class GlobalExceptionHandlerMiddleware : IMiddleware
 {
     private readonly IHostEnvironment _environment;
+    // Biết app đang chạy ở:
+    //  Môi trường dev
+    //  Môi trường production
     private readonly ILogger<GlobalExceptionHandlerMiddleware> _logger;
+    //Dùng để ghi ra lỗi
 
     public GlobalExceptionHandlerMiddleware(
         IHostEnvironment environment,
@@ -19,11 +23,12 @@ public class GlobalExceptionHandlerMiddleware : IMiddleware
     {
         try
         {
-            await next(context);
+            await next(context);//cho request đi tiếp 
         }
         catch (Exception ex)
-        {
-            _logger.LogError(ex, "Unhandled exception occurred while processing request {Path}", context.Request.Path);
+        {//ghi lại lỗi ex, ghi luôn API bị lỗi
+            _logger.LogError(ex, "Unhandled exception occurred while processing request {Path}", 
+                            context.Request.Path);
 
             if (context.Response.HasStarted)
             {
@@ -33,27 +38,33 @@ public class GlobalExceptionHandlerMiddleware : IMiddleware
             }
 
             var statusCode = MapStatusCode(ex);
+            // xác định status code
+            // convert lỗi -> HTTP code 
             context.Response.StatusCode = statusCode;
-            context.Response.ContentType = "application/json";
-
+            context.Response.ContentType = "application/json"; //trả về dạng json 
+            
+            //tạo response error
             var response = ApiResponseFactory.ErrorResponse(
                 message: ResolveClientMessage(ex, statusCode),
-                errors: _environment.IsDevelopment() ? new { detail = ex.Message } : null,
+                errors: _environment.IsDevelopment() ? new { detail = ex.Message } : null, 
+                //nếu đang dev thì show lỗi thật, nếu đang production thì ẩn lỗi
                 traceId: context.TraceIdentifier);
+                //Id của request
 
             await context.Response.WriteAsJsonAsync(response);
+            //gửi json response rồi cho client
         }
     }
 
     private static int MapStatusCode(Exception ex)
     {
-        return ex switch
+        return ex switch // lỗi thuộc cái nào 
         {
-            ArgumentException => StatusCodes.Status400BadRequest,
-            InvalidOperationException => StatusCodes.Status400BadRequest,
-            UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
-            KeyNotFoundException => StatusCodes.Status404NotFound,
-            _ => StatusCodes.Status500InternalServerError
+            ArgumentException => StatusCodes.Status400BadRequest, // sai input -> 400
+            InvalidOperationException => StatusCodes.Status400BadRequest, // sai input -> 400
+            UnauthorizedAccessException => StatusCodes.Status401Unauthorized,// chưa login trả -> 401
+            KeyNotFoundException => StatusCodes.Status404NotFound, // không tìm thấy -> 404
+            _ => StatusCodes.Status500InternalServerError // lỗi khác -> 500
         };
     }
 
