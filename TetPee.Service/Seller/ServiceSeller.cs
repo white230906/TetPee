@@ -113,8 +113,81 @@ public class ServiceSeller: IServiceSeller
             {
                 To = request.Email,
                 Subject = "Welcome to TetPee",
-                Body = $"Dear {request.FirstName} {request.LastName}, \n\n" +
-                "Thank you for registering as a seller on TetPee. We are excited hihi",
+                Body = $@"
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                </head>
+                <body style='margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;'>
+
+                    <table width='100%' cellpadding='0' cellspacing='0' style='background-color:#f4f6f8; padding:20px;'>
+                        <tr>
+                            <td align='center'>
+                                
+                                <!-- Container -->
+                                <table width='600' cellpadding='0' cellspacing='0' style='background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.05);'>
+
+                                    <!-- Header -->
+                                    <tr>
+                                        <td style='background:#4CAF50; padding:20px; text-align:center; color:white; font-size:24px; font-weight:bold;'>
+                                            Welcome to TetPee 🎉
+                                        </td>
+                                    </tr>
+
+                                    <!-- Body -->
+                                    <tr>
+                                        <td style='padding:30px; color:#333333; font-size:16px; line-height:1.6;'>
+
+                                            <p>Dear <strong>{request.FirstName} {request.LastName}</strong>,</p>
+
+                                            <p>
+                                                Thank you for registering as a <strong>seller</strong> on TetPee.
+                                                We are thrilled to have you join our growing marketplace!
+                                            </p>
+
+                                            <p>
+                                                You can now start listing your products, managing your store, 
+                                                and reaching thousands of customers.
+                                            </p>
+
+                                            <!-- Button -->
+                                            <p style='text-align:center; margin:30px 0;'>
+                                                <a href='#' 
+                                                   style='background-color:#4CAF50; color:white; padding:12px 25px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;'>
+                                                    Go to Dashboard
+                                                </a>
+                                            </p>
+
+                                            <p>
+                                                If you have any questions, feel free to contact our support team.
+                                            </p>
+
+                                            <p>
+                                                Best regards,<br/>
+                                                <strong>The TetPee Team</strong>
+                                            </p>
+
+                                        </td>
+                                    </tr>
+
+                                    <!-- Footer -->
+                                    <tr>
+                                        <td style='background:#f0f0f0; padding:15px; text-align:center; font-size:12px; color:#777;'>
+                                            © 2026 TetPee. All rights reserved.
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </body>
+                </html>
+                "
             });
             
             if(sellerResult > 0) return "Add Seller successfully";
