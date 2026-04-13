@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TetPee.Api.Extensions;
 using TetPee.Repository;
 using TetPee.Repository.Entity;
+using TetPee.Service.Models;
 using TetPee.Service.Seller;
 
 namespace TetPee.Api.Controllers;
@@ -43,6 +44,7 @@ public class SellerController : ControllerBase
     public async Task<IActionResult> CreateSeller(RequestSeller.CreateSellerRequest request)
     {
         var seller = await _serviceSeller.CreateSeller(request);
-        return Ok(seller);
+        return Ok(ApiResponseFactory
+            .SuccessResponse(seller, "Create successfully", HttpContext.TraceIdentifier));
     }
 }
