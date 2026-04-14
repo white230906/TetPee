@@ -15,12 +15,7 @@ public class User: BaseEntity<Guid>, IAuditableEntity
     public bool IsVerify { get; set; } = false; // khi user register thì phải verify email hợp lệ
     public int VerifyCode  { get; set; } // Mã verify gửi về email
     public string? DateOfBirth { get; set; } = null;
-    //public string? DateOfBirth { get; set; } = null;
-    //(down)thuật ngữ con bot: trong 5p hay 10p thằng nào chưa verify thì con bot sẽ dọn dẹp
-        // 👉 Đây là background job
-        // Hangfire 
-        // Quartz
-        // Cron job
+   
     public Seller? Seller { get; set; }
     
     public Cart Cart { get; set; }
