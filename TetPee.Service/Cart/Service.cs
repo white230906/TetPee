@@ -35,19 +35,18 @@ public class Service: IService
         };
         
         _dbContext.Add(cart);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();    
     }
 
     public async Task AddProductToCart(Request.AddProductToCartRequest request)
     {
         var userId = _httpContext.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "UserId")?.Value;
-        
         var userIdGuid = Guid.Parse(userId!);
 
         var query = _dbContext.Carts.Where(x => x.UserId == userIdGuid);
         
        var cart = await query.FirstOrDefaultAsync();
-       
+       //nếu cart không tồn tại thì tạo mới dùm nó luôn
         if (cart == null)
         {
            // throw new Exception("Cart not exist");
@@ -60,10 +59,11 @@ public class Service: IService
            _dbContext.Add(cart);
            await _dbContext.SaveChangesAsync();
         }
+        //kiểm tra thử product nó add nào có nằm trong product của mình không và cart đó có tồn tại không
         var productQuery = _dbContext.CartDetails.Where(
              x => x.CartId == cart.Id && x.ProductId == request.ProductId);
         var cartExist = await productQuery.FirstOrDefaultAsync();
-        
+        //nếu tồn tại thì update quantity
         if (cartExist != null)
         {
             cartExist.Quantity += request.Quantity; 
@@ -71,7 +71,7 @@ public class Service: IService
             await _dbContext.SaveChangesAsync();
             return;
         }
-        
+        //có cart, có product thì tạo CartDetail luôn
         var cartDetail = new CartDetail()
         {
             CartId = cart.Id,
@@ -87,6 +87,8 @@ public class Service: IService
     {
         var userId = _httpContext.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "UserId")?.Value;
         var userIdGuid = Guid.Parse(userId!);
+        
+        //xóa ở Product ở Cart của User nào
         var query = _dbContext.CartDetails.Where(
             x => x.Cart.UserId == userIdGuid && x.ProductId == request.ProductId);
         var cartDetail = await query.FirstOrDefaultAsync();
