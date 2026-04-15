@@ -102,8 +102,8 @@ public class Service: IService
         }
         //Tìm những sản phẩm chứa trong Cart với các id sau productIds của UserId(productIds cua User nao)
         
-        //dòng này để tết các giao dịch nào là của TetPee mình nè!!!
-        //Bank gửi về thì mình viết order nào
+        //dòng này để xem các giao dịch nào là của TetPee mình nè!!!
+        //Bank gửi về thì mình biết order nào
         string description = $"TETPEE-{order.Id}";
 
         //Trả về cho client những thứ này nhé
@@ -130,7 +130,7 @@ public class Service: IService
     public async Task SepayWebhookHandler(Request.SepayWebhookRequest request)
     {
         var description = request.Code;//TETPEEORDERID,
-        //code và tổng số tiền là quan trọng trong callback aPI
+        //code và tổng số tiền là quan trọng trong callback API
         
         var raw = description.Replace("TETPEE", ""); // => ORDERID
         
@@ -187,7 +187,7 @@ public class Service: IService
         await _dbContext.SaveChangesAsync();
         
         var productIds = order.OrderDetails.Select(x => x.ProductId).ToList();
-        
+        //tìm product nằm ở Cart của UserId nào, rồi xóa nó đi
         var queryProductCart = _dbContext.CartDetails.Where(x => 
             x.Cart.UserId == order.UserId &&
             productIds.Contains(x.ProductId));

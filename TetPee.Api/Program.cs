@@ -65,25 +65,33 @@ builder.Services.AddScoped<IServiceCategory, ServiceCategory>();
 builder.Services.AddScoped<IService, Service>();
 builder.Services.AddScoped<ProductService.IService, ProductService.Service>();
 
+//Lúc nãy là có tại một class là ProcessTransactionPendingJob
+    //nó đóng vai trò như một nhân viên
+    //Nhưng có một vấn đề là: Ai gọi nhân viên này làm việc ? -> Quartz Scheduler
 builder.Services.AddQuartz(options =>
-{
+{//tại một ID để định danh cho job này
+    //Mỗi job cần có tên riêng để Scheduler quản lý 
     var jobKey = new JobKey(nameof(ProcessTransactionPendingJob));
 
     options
+        // đăng kí job này để chạy
         .AddJob<ProcessTransactionPendingJob>(jobKey)
+        //add trigger: khi nào con job này sẽ chạy
         .AddTrigger(trigger =>
             trigger
                 .ForJob(jobKey)
-                .WithSimpleSchedule(schedule => schedule
+                .WithSimpleSchedule(schedule => schedule // với lịch trình chạy là mỗi phép, time out là 2p
                     .WithIntervalInMinutes(1)
                     .RepeatForever()
                 )
         );
 });
 
-builder.Services.AddQuartzHostedService(options =>
+builder.Services.AddQuartzHostedService(options => //Chạy Quartz như một background service trong app
+//app start -> Quartz start
+//app stop -> Quartz stop
 {
-    options.WaitForJobsToComplete = true;
+    options.WaitForJobsToComplete = true;//nếu app tắt, hãy chờ job chạy xong rồi mới tắt
 });
 
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();//học
