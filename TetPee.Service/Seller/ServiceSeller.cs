@@ -74,6 +74,10 @@ public class ServiceSeller: IServiceSeller
         });
 
         var result = await selectedQuery.FirstOrDefaultAsync();
+        if (result == null)
+        {
+            throw new Exception("Not found");
+        }
         return result;
     }
 
