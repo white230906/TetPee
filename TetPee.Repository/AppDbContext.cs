@@ -67,9 +67,9 @@ public class AppDbContext : DbContext//là một thằng đại diện cho db
         : base(options) { }
     
     //Db<T>: khai báo bảng trong db thông qua AppDbContext
-    public DbSet<User> Users  { get; set; }
-    public DbSet<Seller> Sellers  { get; set; }
-    public DbSet<Product> Products  { get; set; }
+    public virtual DbSet<User> Users  { get; set; }
+    public virtual DbSet<Seller> Sellers  { get; set; }
+    public virtual DbSet<Product> Products  { get; set; }
     public DbSet<ProductStorage> ProductStorages  { get; set; }
     public DbSet<Storage> Storages  { get; set; }
     public DbSet<Cart> Carts  { get; set; }
